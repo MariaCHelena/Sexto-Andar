@@ -15,4 +15,34 @@ public class Apartamento extends Imovel {
 		this.pet = pet;
 	}
 	
+	public double calcularValorTotalDoApartamento(double precoCondominio, double valorDoImovel) {
+		return precoCondominio+valorDoImovel;
+	}
+	
+	
+	public double getPrecoCondominio() {
+		return precoCondominio;
+	}
+	public void setPrecoCondominio(double precoCondominio) {
+		this.precoCondominio = precoCondominio;
+	}
+	public boolean isAreaDeConvivencia() {
+		return areaDeConvivencia;
+	}
+	public void setAreaDeConvivencia(boolean areaDeConvivencia) {
+		this.areaDeConvivencia = areaDeConvivencia;
+	}
+	public int getAndar() {
+		return andar;
+	}
+	public void setAndar(int andar) {
+		this.andar = andar;
+	}
+	public boolean isPet() {
+		return pet;
+	}
+	public void setPet(boolean pet) {
+		this.pet = pet;
+	}
+	
 }
