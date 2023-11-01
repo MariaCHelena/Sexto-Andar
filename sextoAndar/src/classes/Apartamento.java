@@ -16,7 +16,7 @@ public class Apartamento extends Imovel {
 	}
 	
 	public double calcularValorTotalDoApartamento(double precoCondominio, double valorDoImovel) {
-		return precoCondominio+valorDoImovel;
+		return precoCondominio+getValorDoImovel();
 	}
 	
 	

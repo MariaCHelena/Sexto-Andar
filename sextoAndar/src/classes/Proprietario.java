@@ -9,7 +9,7 @@ public class Proprietario extends Conta{
 	}
 	
 	public int qtdImoveisCadastrados() {
-		return 0;
+		return imoveisCadastrados.length;
 	}
 	
 }
