@@ -10,4 +10,8 @@ public class Casa extends Imovel {
 		this.casaUnicaNoTerreno = casaUnicaNoTerreno;
 	}
 	
+	public String mandarEmbora() {
+		return "VC foi despejado";
+	}
+	
 }
