@@ -14,4 +14,7 @@ public class Casa extends Imovel {
 		return "VC foi despejado";
 	}
 	
+	public String mandarVoltar() {
+		return "Vc pode voltar!";
+	}
 }
