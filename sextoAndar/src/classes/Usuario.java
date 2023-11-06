@@ -19,5 +19,13 @@ public class Usuario extends Conta {
 		return this.imoveisFavoritos;
 	}
 	
+	public boolean desfavoritar(Imovel i) {
+		if(imoveisFavoritos.contains(i)) {
+			imoveisFavoritos.remove(i);
+			return true;
+		} else {
+			return false;
+		}
+	}
 	
 }
