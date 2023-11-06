@@ -1,11 +1,28 @@
 package classes;
 
 public class Usuario extends Conta {
-	private Imovel[] listaDeFavoritos;
+	private int qtdFavoritos;
+	private Imovel[] listaDeFavoritos = new Imovel[20];
 
-	public Usuario(String nomeUsuario, String numeroCelular, String email, Imovel[] listaDeFavoritos) {
-		super(nomeUsuario, numeroCelular, email);
-		this.listaDeFavoritos = listaDeFavoritos;
+	public Usuario(String nomeUsuario, String numeroCelular, String email, String senha) {
+		super(nomeUsuario, numeroCelular, email, senha);
+		qtdFavoritos = 0;
 	}
+	
+	public boolean favoritar(Imovel i) {
+		if(qtdFavoritos < 20) {
+			listaDeFavoritos[qtdFavoritos] = i;
+			qtdFavoritos++;
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public Imovel[] getFavoritos() {
+		return this.listaDeFavoritos;
+	}
+	
+	
 	
 }

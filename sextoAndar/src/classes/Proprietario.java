@@ -1,15 +1,26 @@
 package classes;
 
 public class Proprietario extends Conta{
-	private Imovel[] imoveisCadastrados;
+	private int qtdImoveis;
+	private Imovel[] imoveisCadastrados = new Imovel[3];
 
-	public Proprietario(String nomeUsuario, String numeroCelular, String email, Imovel[] imoveisCadastrados) {
-		super(nomeUsuario, numeroCelular, email);
-		this.imoveisCadastrados = imoveisCadastrados;
+	public Proprietario(String nomeUsuario, String numeroCelular, String email, String senha) {
+		super(nomeUsuario, numeroCelular, email, senha);
+		this.qtdImoveis = 0;
 	}
 	
-	public int qtdImoveisCadastrados() {
-		return imoveisCadastrados.length;
+	public int getQtdImovies() {
+		return this.qtdImoveis;
+	}
+	
+	public boolean cadastrarImovel(Imovel i) {
+		if(qtdImoveis < 3) {
+			imoveisCadastrados[qtdImoveis] = i;
+			qtdImoveis++;
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 }
