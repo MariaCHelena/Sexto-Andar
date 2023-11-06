@@ -1,28 +1,23 @@
 package classes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Usuario extends Conta {
-	private int qtdFavoritos;
-	private Imovel[] listaDeFavoritos = new Imovel[20];
+	private List<Imovel> imoveisFavoritos = new ArrayList<>();
 
 	public Usuario(String nomeUsuario, String numeroCelular, String email, String senha) {
 		super(nomeUsuario, numeroCelular, email, senha);
-		qtdFavoritos = 0;
 	}
 	
 	public boolean favoritar(Imovel i) {
-		if(qtdFavoritos < 20) {
-			listaDeFavoritos[qtdFavoritos] = i;
-			qtdFavoritos++;
-			return true;
-		} else {
-			return false;
-		}
+		imoveisFavoritos.add(i);
+		return true;
 	}
 	
-	public Imovel[] getFavoritos() {
-		return this.listaDeFavoritos;
+	public List<Imovel> getFavoritos() {
+		return this.imoveisFavoritos;
 	}
-	
 	
 	
 }
