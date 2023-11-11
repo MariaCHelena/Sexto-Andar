@@ -1,11 +1,31 @@
 package negocio;
 
-public class Usuario extends Conta {
-	private Imovel[] listaDeFavoritos;
+import java.util.ArrayList;
+import java.util.List;
 
-	public Usuario(String nomeUsuario, String numeroCelular, String email, Imovel[] listaDeFavoritos) {
-		super(nomeUsuario, numeroCelular, email);
-		this.listaDeFavoritos = listaDeFavoritos;
+public class Usuario extends Conta {
+	private List<Imovel> imoveisFavoritos = new ArrayList<>();
+
+	public Usuario(String nomeUsuario, String numeroCelular, String email, String senha) {
+		super(nomeUsuario, numeroCelular, email, senha);
 	}
-	
+
+	public boolean favoritar(Imovel i) {
+		imoveisFavoritos.add(i);
+		return true;
+	}
+
+	public List<Imovel> getFavoritos() {
+		return this.imoveisFavoritos;
+	}
+
+	public boolean desfavoritar(Imovel i) {
+		if(imoveisFavoritos.contains(i)) {
+			imoveisFavoritos.remove(i);
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 }

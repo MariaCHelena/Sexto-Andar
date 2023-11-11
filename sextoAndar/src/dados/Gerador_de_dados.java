@@ -6,7 +6,7 @@ import negocio.Apartamento;
 import negocio.Casa;
 import java.util.Random;
 public class Gerador_de_dados {
-	public static Proprietario gerarProprietarioAleatorio() {
+	/* public static Proprietario gerarProprietarioAleatorio() {
         Random random = new Random();
         String[] nomes = {"João", "Maria", "José", "Ana", "Pedro", "Mariana"};
         String nomeUsuario = nomes[random.nextInt(nomes.length)];
@@ -49,6 +49,6 @@ public class Gerador_de_dados {
 	    }
 	    return imoveis;
 	}
-
+*/
 
 }
