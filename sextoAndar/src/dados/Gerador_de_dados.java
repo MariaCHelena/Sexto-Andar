@@ -1,9 +1,9 @@
 package dados;
-import classes.Usuario;
-import classes.Proprietario;
-import classes.Imovel;
-import classes.Apartamento;
-import classes.Casa;
+import negocio.Usuario;
+import negocio.Proprietario;
+import negocio.Imovel;
+import negocio.Apartamento;
+import negocio.Casa;
 import java.util.Random;
 public class Gerador_de_dados {
 	public static Proprietario gerarProprietarioAleatorio() {
