@@ -9,5 +9,30 @@ public class Casa extends Imovel {
 		this.precoTerreno = precoTerreno;
 		this.casaUnicaNoTerreno = casaUnicaNoTerreno;
 	}
+	public String toString() {
+		return "Tipo de Imóvel selecionado: Apartamento\n" +
+			"Endereço: " + getEndereco() + "\n" +
+			"Tamanho do Imóvel: " + getTamanhoImovel() + "\n" +
+			"Descrição: " + getDescricao() + "\n" +
+			"Valor do Imóvel: " + getValorDoImovel() + "\n" +
+			"Data de publicação: " + getDataPublicacao() + "\n" +
+			"Tipo de Venda: " + getTipoDeVenda() + "\n" +
+			"Preço do Terreno: " + getPrecoTerreno() + "\n" +
+			"Casa única no terreno: " + (isCasaUnicaNoTerreno() ? "Sim" : "Não")+"\n";
+	}
+	
+	
+	public double getPrecoTerreno() {
+		return precoTerreno;
+	}
+	public boolean isCasaUnicaNoTerreno() {
+		return casaUnicaNoTerreno;
+	}
+	public void setPrecoTerreno(double precoTerreno) {
+		this.precoTerreno = precoTerreno;
+	}
+	public void setCasaUnicaNoTerreno(boolean casaUnicaNoTerreno) {
+		this.casaUnicaNoTerreno = casaUnicaNoTerreno;
+	}
 	
 }
