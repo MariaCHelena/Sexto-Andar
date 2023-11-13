@@ -38,7 +38,9 @@ public class Proprietario extends Conta{
 	public void setImoveisCadastrados(List<Imovel> imoveisCadastrados) {
 		this.imoveisCadastrados = imoveisCadastrados;
 	}
-	
-	
 
-}
+
+	
+	}
+	
+	

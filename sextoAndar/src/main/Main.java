@@ -108,6 +108,7 @@ public class Main {
 		}
 		texto.close();
 		inteiro.close();
+		System.out.print("Esse processo foi encerrado\n");
 		System.exit(0);
 
 	}
