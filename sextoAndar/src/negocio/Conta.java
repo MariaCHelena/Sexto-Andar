@@ -10,19 +10,7 @@ public abstract class Conta {
 		this.email = email;
 		this.senha = senha;
 	}
-	public void setNomeUsuario(String nomeUsuario) {
-		this.nomeUsuario = nomeUsuario;
-	}
-	public void setNumeroCelular(String numeroCelular) {
-		this.numeroCelular = numeroCelular;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-
+	
 	public void excluirConta(Conta c) {
 		c = null;
 	}
@@ -36,5 +24,40 @@ public abstract class Conta {
 			return false;
 		}
 	}
+
+	public String getNomeUsuario() {
+		return nomeUsuario;
+	}
+
+	public String getNumeroCelular() {
+		return numeroCelular;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setNomeUsuario(String nomeUsuario) {
+		this.nomeUsuario = nomeUsuario;
+	}
+
+	public void setNumeroCelular(String numeroCelular) {
+		this.numeroCelular = numeroCelular;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+	
+	
+	
 
 }
