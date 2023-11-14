@@ -3,7 +3,6 @@ package main;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import negocio.Conta;
 import negocio.Proprietario;
 import negocio.Usuario;
 
@@ -13,18 +12,26 @@ public class Main {
 	public static Usuario contaUsuario;
 	public static Proprietario contaProprietario;
 	public static void main(String[] args) {
+		
+		// Criando conta para facilitar os testes
+		Usuario conta = new Usuario("Maria", "celular", "maria@gmail.com", "123");
+		listaDeUsuario.add(conta);
+		
+		
 		boolean keep = true;
 		Scanner sc = new Scanner(System.in);
 		do {
 			if(contaUsuario != null || contaProprietario != null) {
-				keep = exibirMenuLogado((contaUsuario != null) ? contaUsuario : contaProprietario);
+				keep = (contaUsuario != null) ? exibirMenuLogadoUsuario(contaUsuario, keep, sc) : exibirMenuLogadoProprietario(contaProprietario, keep, sc);
+				clearScreen();
 			} else {
 				keep = exibirMenuAutenticacao(keep, sc);
+				clearScreen();
 			}
 		} while(keep);
 		
 		sc.close();
-		
+		System.out.println("Muito obrigado por usar o nosso programa!");
 		System.out.println("Esse processo foi encerrado");
 	}
 	
@@ -104,7 +111,7 @@ public class Main {
 						String senha = sc.nextLine();
 						Usuario conta = new Usuario(nome, celular, email, senha);
 						listaDeUsuario.add(conta);
-						System.out.print("Você foi cadastrado com sucesso:\n" 
+						System.out.print("Você foi cadastrado com sucesso. \nVolte ao menu inicial para realizar seu login.\n" 
 								+ "1. Voltar ao menu inicial\n" 
 								+ "2. Encerrar\n");
 						selecaoCadastro = sc.nextInt();
@@ -126,7 +133,7 @@ public class Main {
 						String senha = sc.nextLine();
 						Proprietario conta = new Proprietario(nome, celular, email, senha);
 						listaDeProprietario.add(conta);
-						System.out.print("Você foi cadastrado com sucesso. Volte ao menu inicial para realizar seu login.\n" 
+						System.out.print("Você foi cadastrado com sucesso. \nVolte ao menu inicial para realizar seu login.\n" 
 								+ "1. Voltar ao menu inicial\n" 
 								+ "2. Encerrar\n");
 						selecaoCadastro = sc.nextInt();
@@ -136,7 +143,6 @@ public class Main {
 					}
 					break;
 				case 3:
-					System.out.println("Muito obrigado por usar o nosso programa!");
 					keep = false;
 					break;
 				default:
@@ -146,9 +152,52 @@ public class Main {
 		return keep;
 	}
 	
-	public static boolean exibirMenuLogado(Conta c) {
+	public static boolean exibirMenuLogadoUsuario(Usuario c, boolean keep, Scanner sc) {
 		System.out.println("Logado como usuario: " + c.getNomeUsuario());
-		return false;
+		System.out.print("Selecione a Opção desejada:\n1 - Visualizar dados da Conta.\n2 - Deslogar.\n3 - Sair do sistema");
+		int selecaoConta = sc.nextInt();
+		switch(selecaoConta) {
+			case 1:
+				clearScreen();
+				System.out.println(c);
+				break;
+			case 2:
+				contaUsuario = null;
+				break;
+			case 3:
+				keep = false;
+				break;
+			default:
+				System.out.println("Opção inválida, tente novamente.");
+				break;
+		}
+		return keep;
+	}
+	
+	public static boolean exibirMenuLogadoProprietario(Proprietario c, boolean keep, Scanner sc) {
+		System.out.println("Logado como usuario: " + c.getNomeUsuario());
+		System.out.print("Selecione a Opção desejada:\n1 - Visualizar dados da Conta.\n2 - Deslogar.\n3 - Sair do sistema");
+		int selecaoConta = sc.nextInt();
+		switch(selecaoConta) {
+			case 1:
+				clearScreen();
+				System.out.println(c);	
+				break;
+			case 2:
+				contaUsuario = null;
+				break;
+			case 3:
+				keep = false;
+				break;
+			default:
+				System.out.println("Opção inválida, tente novamente.");
+				break;
+		}
+		return keep;
+	}
+	
+	public static void clearScreen() {  
+		System.out.println("\n");
 	}
 
 }

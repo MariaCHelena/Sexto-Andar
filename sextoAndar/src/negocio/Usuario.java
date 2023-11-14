@@ -28,5 +28,10 @@ public class Usuario extends Conta {
 		}
 	}
 	
-
+	public String toString() {
+		return "Conta de Usuário\n" + "------------------------\n" + "Nome do usuário cadastrado: " + this.nomeUsuario + 
+				"\nNúmero do celular cadastrado: " + this.numeroCelular +
+				"\nEmail da conta: " + this.email + 
+				"\nQuantidade de imóveis favoritados: " + imoveisFavoritos.size();
+	}
 }

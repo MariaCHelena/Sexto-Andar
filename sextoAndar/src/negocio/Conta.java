@@ -56,8 +56,4 @@ public abstract class Conta {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
-	
-	
-
 }
