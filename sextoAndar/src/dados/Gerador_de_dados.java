@@ -6,7 +6,6 @@ import java.util.Random;
 public class Gerador_de_dados {
 	Random random = new Random();
 	private String[] nomes = { "Ana Maria", "João Pedro", "Paulo Jose", "Louro Jose", "Maria Clara" };
-	private String[] emails = { "azulmarinho@yahoo.com", "verdefloresta@gmail.com", "brancoceu@hotmail.com" };
 	private String[] numeros = { "(61)9 91238-2741", "(61)9 98213-1234", "(61)9 93127-2124" };
 	private String senha_geral = "123";
 	private String[] endereco = { "Avenida Esbertalina Barbosa Damiani, Lote 14", "Travessa da CDL, Lote 23",
@@ -19,14 +18,21 @@ public class Gerador_de_dados {
 	private String[] tipodeVenda = { "Aluguel", "Venda" };
 
 	public Usuario geradorDeUsuario() {
-		Usuario user = new Usuario(nomes[random.nextInt(4)], numeros[random.nextInt(2)], emails[random.nextInt(2)],
+		Usuario user = new Usuario(nomes[random.nextInt(4)], numeros[random.nextInt(2)], gerarEmail(),
 				senha_geral);
 		return user;
 	}
 
 	public Proprietario geradorDeProprietario() {
 		Proprietario user = new Proprietario(nomes[random.nextInt(4)], numeros[random.nextInt(2)],
-				emails[random.nextInt(2)], senha_geral);
+				gerarEmail(), senha_geral);
+		for (int i=0; i< random.nextInt(3);i++) {
+			if(random.nextBoolean()) {
+				user.cadastrarImovel(geradorDeCasa());
+			}else {
+				user.cadastrarImovel(geradorDeApartamento());
+			}
+		}
 		return user;
 	}
 
@@ -42,4 +48,16 @@ public class Gerador_de_dados {
 				random.nextDouble(400),random.nextBoolean(),random.nextInt(8),random.nextBoolean());
 		return apt;
 	}
-}
+	public String gerarEmail() {
+		int tamanhoString = 8;
+		String caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		StringBuilder randomString = new StringBuilder(tamanhoString);
+	    for (int i = 0; i < tamanhoString; i++) {
+	        int indiceAleatorio = random.nextInt(caracteres.length());
+	        char caractereAleatorio = caracteres.charAt(indiceAleatorio);
+	        randomString.append(caractereAleatorio);
+	    }
+	    return randomString.toString() + "@gmail.com";
+	}
+	}
+	
