@@ -2,8 +2,7 @@ package main;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
-import negocio.Proprietario;
-import negocio.Usuario;
+import negocio.*;
 import dados.Gerador_de_dados;
 
 public class Main {
@@ -209,42 +208,132 @@ public class Main {
 					+ "1 - Casa\n"
 					+ "2 - Apartamento\n");
 			int tipo = sc.nextInt();
+			sc.nextLine(); //limpando o scanner
 			switch(tipo) {
 			case 1:
 				System.out.print("Digite o endereço no qual se localiza a casa:\n");
-				String endereco = sc.nextLine();
-				System.out.print("Digite o tamanho do seu imovel em metros quadrados:\n");
-				Double tamanhoimovel = sc.nextDouble();
-				System.out.print("Descreva em poucas palavras uma breve descrição do imovel:\n");
-				String descricao = sc.nextLine();
-				System.out.print("Digite o valor do imovel em reais:\n");
-				Double valorimovel = sc.nextDouble();
-				LocalDate datanostring = LocalDate.now(); 
-				String data = datanostring.toString();
-				System.out.print("Qual o tipo de venda do seu imovel:\n"
-						+ "1 - Aluguel\n"
-						+ "2 - Venda\n");
-				int opcao = sc.nextInt();
-				boolean tipoDeVenda;
+		        String endereco = sc.nextLine();
+		        System.out.print("Digite o tamanho do seu imovel em metros quadrados:\n");
+		        double tamanhoimovel = sc.nextDouble();
+		        sc.nextLine(); // Limpa o buffer do scanner
+		        System.out.print("Descreva em poucas palavras uma breve descrição do imovel:\n");
+		        String descricao = sc.nextLine();
+		        System.out.print("Digite o valor do imovel em reais:\n");
+		        double valorimovel = sc.nextDouble();
+		        sc.nextLine(); // Limpa o buffer do scanner
+		        LocalDate datanostring = LocalDate.now(); 
+		        String data = datanostring.toString();
+		        System.out.print("Qual o tipo de venda do seu imovel:\n"
+		                + "1 - Aluguel\n"
+		                + "2 - Venda\n");
+		        int opcao = sc.nextInt();
+		        boolean tipoDeVenda = true;
+		        switch(opcao) {
+		            case 1: tipoDeVenda = true; break;
+		            case 2: tipoDeVenda = false; break;
+		            default:
+		                System.out.println("Opção inválida, pressione qualquer tecla para continuar.\n");
+		                sc.nextLine(); // Limpa o buffer do scanner
+		                break;
+		        }
+				System.out.print("Digite o preço do terreno em que o Imovel se localiza:\n");
+				double precoTerreno = sc.nextDouble();
+				sc.nextLine(); // Limpa o buffer do scanner
+				System.out.print("É a única casa no terreno:\n"
+						+ "1 - Sim\n"
+						+ "2 - Não\n");
+				boolean casaUnicaTerreno = true;
+				opcao = sc.nextInt();
 				switch(opcao) {
-				case 1:
-					tipoDeVenda = true;
-				case 2:
-					tipoDeVenda = false;
-				default:
-					System.out.println("Opção inválida, pressione qualquer tecla para continuar.\n");
-					String ab = sc.nextLine();
-					if(ab != null) {
-						sc.nextLine(); //limpando o scanner
-						break;
-					}
+					case 1: casaUnicaTerreno = true; break;
+					case 2: casaUnicaTerreno = false; break;
+					default:
+						System.out.println("Opção inválida, pressione qualquer tecla para continuar.\n");
+						String h = sc.nextLine();
+						if(h != null) {
+							sc.nextLine(); //limpando o scanner
+							break;
+						}
 				}
-				
-				System.out.print("Digite o preço do terreno em que o Imovel se localiza:");
-				
-				
+				Casa casa = new Casa(endereco,tamanhoimovel,descricao,valorimovel,data,
+						tipoDeVenda,precoTerreno,casaUnicaTerreno);
+				contaProprietario.cadastrarImovel(casa);
+				System.out.print("Seu imovel foi cadastrado com sucesso.\n");
+				System.out.println("Aperte qualquer tecla para continuar\n");
+				String g = sc.nextLine();
+				if(g != null) {
+					sc.nextLine(); //limpando o scanner
+					break;
+				}
+				break;
 			case 2:
-			
+				System.out.print("Digite o endereço no qual se localiza a casa:\n");
+		        String endereco1 = sc.nextLine();
+		        System.out.print("Digite o tamanho do seu imovel em metros quadrados:\n");
+		        double tamanhoimovel1 = sc.nextDouble();
+		        sc.nextLine(); // Limpa o buffer do scanner
+		        System.out.print("Descreva em poucas palavras uma breve descrição do imovel:\n");
+		        String descricao1 = sc.nextLine();
+		        System.out.print("Digite o valor do imovel em reais:\n");
+		        double valorimovel1 = sc.nextDouble();
+		        sc.nextLine(); // Limpa o buffer do scanner
+		        LocalDate datanostring1 = LocalDate.now(); 
+		        String data1 = datanostring1.toString();
+		        System.out.print("O condominio possui area de convivencia:\n"
+		                + "1 - Sim\n"
+		                + "2 - Não\n");
+		        int opcao1 = sc.nextInt();
+		        boolean areaconvivencia = false;
+		        switch(opcao1) {
+		            case 1: areaconvivencia = true; break;
+		            case 2: areaconvivencia = false; break;
+		            default:
+		                System.out.println("Opção inválida, pressione qualquer tecla para continuar.\n");
+		                sc.nextLine(); // Limpa o buffer do scanner
+		                break;
+		        }
+		        int opcao6 = sc.nextInt();
+		        boolean tipoDeVenda1 = true;
+		        switch(opcao6) {
+		            case 1: tipoDeVenda = true; break;
+		            case 2: tipoDeVenda = false; break;
+		            default:
+		                System.out.println("Opção inválida, pressione qualquer tecla para continuar.\n");
+		                sc.nextLine(); // Limpa o buffer do scanner
+		                break;
+		        }
+				System.out.print("Digite o preço do terreno em que o Imovel se localiza:\n");
+				double precoCondominio = sc.nextDouble();
+				sc.nextLine(); // Limpa o buffer do scanner
+				System.out.print("É permitido animais:\n"
+						+ "1 - Sim\n"
+						+ "2 - Não\n");
+				boolean pet = true;
+				opcao = sc.nextInt();
+				switch(opcao) {
+					case 1: pet = true; break;
+					case 2: pet = false; break;
+					default:
+						System.out.println("Opção inválida, pressione qualquer tecla para continuar.\n");
+						String h = sc.nextLine();
+						if(h != null) {
+							sc.nextLine(); //limpando o scanner
+							break;
+						}
+				}
+				sc.nextLine();
+				int andar = sc.nextInt(); 
+				Apartamento aptm = new Apartamento(endereco1,tamanhoimovel1,descricao1,valorimovel1,data1,
+						tipoDeVenda1,precoCondominio,areaconvivencia,andar,pet);
+				contaProprietario.cadastrarImovel(aptm);
+				System.out.print("Seu imovel foi cadastrado com sucesso.\n");
+				System.out.println("Aperte qualquer tecla para continuar\n");
+				String j = sc.nextLine();
+				if(j != null) {
+					sc.nextLine(); //limpando o scanner
+					break;
+				}
+				break;
 			default:
 				System.out.println("Opção inválida, pressione qualquer tecla para continuar.\n");
 				String ab = sc.nextLine();

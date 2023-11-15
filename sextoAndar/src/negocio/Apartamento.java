@@ -6,8 +6,8 @@ public class Apartamento extends Imovel {
 	private int andar;
 	private boolean pet;
 	public Apartamento(String endereco, double tamanhoImovel, String descricao, double valorDoImovel,
-			String dataPublicacao, boolean tipoDeVenda, double precoCondominio, boolean areaDeConvivencia, int andar,
-			boolean pet) {
+			String dataPublicacao, boolean tipoDeVenda, double precoCondominio, boolean areaDeConvivencia, 
+			int andar, boolean pet) {
 		super(endereco, tamanhoImovel, descricao, valorDoImovel, dataPublicacao, tipoDeVenda);
 		this.precoCondominio = precoCondominio;
 		this.areaDeConvivencia = areaDeConvivencia;
