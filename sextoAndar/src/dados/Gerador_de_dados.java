@@ -15,7 +15,6 @@ public class Gerador_de_dados {
 			"Sobrado espaçoso com piscina e área de lazer.",
 			"Loft urbano com design contemporâneo e localização central." };
 	private String[] datas = { "15/03/2017", "22/08/2018", "07/01/2019", "14/06/2021", "03/11/2023" };
-	private String[] tipodeVenda = { "Aluguel", "Venda" };
 
 	public Usuario geradorDeUsuario() {
 		Usuario user = new Usuario(nomes[random.nextInt(4)], numeros[random.nextInt(2)], gerarEmail(),
@@ -38,13 +37,13 @@ public class Gerador_de_dados {
 
 	public Casa geradorDeCasa() {
 		Casa casa = new Casa(endereco[random.nextInt(4)], random.nextDouble(132.00) + 32, descricao[random.nextInt(4)],
-				random.nextDouble(2000000.00) + 541200.00, datas[random.nextInt(4)], tipodeVenda[random.nextInt(1)],
+				random.nextDouble(2000000.00) + 541200.00, datas[random.nextInt(4)], random.nextBoolean(),
 				random.nextDouble(500000.00) + 500000.00, random.nextBoolean());
 		return casa;
 	}
 	public Apartamento geradorDeApartamento() {
 		Apartamento apt = new Apartamento(endereco[random.nextInt(4)], random.nextDouble(132.00) + 32, descricao[random.nextInt(4)],
-				random.nextDouble(2000000.00) + 541200.00, datas[random.nextInt(4)], tipodeVenda[random.nextInt(1)],
+				random.nextDouble(2000000.00) + 541200.00, datas[random.nextInt(4)], random.nextBoolean(),
 				random.nextDouble(400),random.nextBoolean(),random.nextInt(8),random.nextBoolean());
 		return apt;
 	}

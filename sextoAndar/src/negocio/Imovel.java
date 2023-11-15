@@ -6,18 +6,24 @@ public abstract class Imovel {
 	protected String descricao;
 	protected double valorDoImovel;
 	protected String dataPublicacao;
-	protected String tipoDeVenda;
+	protected boolean tipoDeVenda;
 	public Imovel(String endereco, double tamanhoImovel, String descricao,
-			double valorDoImovel, String dataPublicacao, String tipoDeVenda) {
+			double valorDoImovel, String dataPublicacao, boolean tipoDeVenda) {
 		this.endereco = endereco;
 		this.tamanhoImovel = tamanhoImovel;
 		this.descricao = descricao;
 		this.valorDoImovel = valorDoImovel;
 		this.dataPublicacao = dataPublicacao;
+		this.tipoDeVenda = tipoDeVenda; // true para aluguel e false para venda
+	}
+	public void setTipoDeVenda(boolean tipoDeVenda) {
 		this.tipoDeVenda = tipoDeVenda;
 	}
 	public String getEndereco() {
 		return endereco;
+	}
+	public boolean isTipoDeVenda() {
+		return tipoDeVenda;
 	}
 	public double getTamanhoImovel() {
 		return tamanhoImovel;
@@ -30,9 +36,6 @@ public abstract class Imovel {
 	}
 	public String getDataPublicacao() {
 		return dataPublicacao;
-	}
-	public String getTipoDeVenda() {
-		return tipoDeVenda;
 	}
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
@@ -49,9 +52,7 @@ public abstract class Imovel {
 	public void setDataPublicacao(String dataPublicacao) {
 		this.dataPublicacao = dataPublicacao;
 	}
-	public void setTipoDeVenda(String tipoDeVenda) {
-		this.tipoDeVenda = tipoDeVenda;
-	}
+	
 	
 	
 }

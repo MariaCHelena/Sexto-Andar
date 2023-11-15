@@ -6,7 +6,7 @@ public class Apartamento extends Imovel {
 	private int andar;
 	private boolean pet;
 	public Apartamento(String endereco, double tamanhoImovel, String descricao, double valorDoImovel,
-			String dataPublicacao, String tipoDeVenda, double precoCondominio, boolean areaDeConvivencia, int andar,
+			String dataPublicacao, boolean tipoDeVenda, double precoCondominio, boolean areaDeConvivencia, int andar,
 			boolean pet) {
 		super(endereco, tamanhoImovel, descricao, valorDoImovel, dataPublicacao, tipoDeVenda);
 		this.precoCondominio = precoCondominio;
@@ -26,7 +26,7 @@ public class Apartamento extends Imovel {
 			"Descrição: " + getDescricao() + "\n" +
 			"Valor do Imóvel: " + getValorDoImovel() + "\n" +
 			"Data de publicação: " + getDataPublicacao() + "\n" +
-			"Tipo de Venda: " + getTipoDeVenda() + "\n" +
+			"Tipo de Venda: " + (isTipoDeVenda() ? "Aluguel" : "Venda") + "\n" +
 			"Preço do Condomínio: " + getPrecoCondominio() + "\n" +
 			"Possui Área de Convivência: " + (isAreaDeConvivencia() ? "Sim" : "Não")+"\n"+
 			"Permite pets: " + (isPet() ? "Sim" : "Não")+"\n";
