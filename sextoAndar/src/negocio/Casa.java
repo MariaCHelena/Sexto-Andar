@@ -10,7 +10,7 @@ public class Casa extends Imovel {
 		this.casaUnicaNoTerreno = casaUnicaNoTerreno;
 	}
 	public String toString() {
-		return "Tipo de Imóvel selecionado: Casa\n" +
+		return "\nTipo de Imóvel selecionado: Casa\n" +
 			"Endereço: " + getEndereco() + "\n" +
 			"Tamanho do Imóvel: " + getTamanhoImovel() + "\n" +
 			"Descrição: " + getDescricao() + "\n" +

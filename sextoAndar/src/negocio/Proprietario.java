@@ -1,8 +1,7 @@
 package negocio;
-import java.util.ArrayList;
 import java.util.List;
 public class Proprietario extends Conta{
-	private List<Imovel> imoveisCadastrados = new ArrayList<>();
+	private List<Imovel> imoveisCadastrados = new ArrayListPersonalizado<>();
 	
 	public Proprietario(String nomeUsuario, String numeroCelular, String email, String senha) {
 		super(nomeUsuario, numeroCelular, email, senha);
@@ -30,10 +29,10 @@ public class Proprietario extends Conta{
 	}
 
 	public String toString() {
-		return "Conta de Proprietário\n" + "------------------------\n" + "Nome do usuário cadastrado: " + this.nomeUsuario + 
+		return "\nConta de Proprietário\n" + "Nome do usuário cadastrado: " + this.nomeUsuario + 
 				"\nNúmero do celular cadastrado: " + this.numeroCelular +
 				"\nEmail da conta: " + this.email + 
-				"\nQuantidade de imóveis cadastrados na conta: " + imoveisCadastrados.size();
+				"\nQuantidade de imóveis cadastrados na conta: " + imoveisCadastrados.size() + "\n";
 	}
 }
 	

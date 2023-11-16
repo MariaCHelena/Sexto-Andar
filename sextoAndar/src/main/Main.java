@@ -3,21 +3,17 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 import dados.*;
-import negocio.Apartamento;
-import negocio.Casa;
-import negocio.Proprietario;
-import negocio.TipoDeVenda;
-import negocio.Usuario;
+import negocio.*;
 
 public class Main {
-	public static ArrayList<Proprietario> listaDeProprietario = new ArrayList<>();
-	public static ArrayList<Usuario> listaDeUsuario = new ArrayList<>();
+	public static ArrayListPersonalizado<Proprietario> listaDeProprietario = new ArrayListPersonalizado<>();
+	public static ArrayListPersonalizado<Usuario> listaDeUsuario = new ArrayListPersonalizado<>();
 	public static Usuario contaUsuario, keep, sc;
 	public static Proprietario contaProprietario;
 	public static void main(String[] args) {
 		for (int i = 0; i <10 ; i++) {
-			listaDeProprietario.add(Gerador_de_dados.geradorDeProprietario());
-		}
+			listaDeProprietario.add(Gerador_de_dados.geradorDeProprietario()); //gerando contas de proprietarios e imoveis
+		} 
 		System.out.print(listaDeProprietario);
 		// Criando conta para facilitar os testes
 		Usuario conta = new Usuario("Maria", "celular", "maria@gmail.com", "123");
@@ -95,11 +91,10 @@ public class Main {
 								System.out.println("Autenticado como: " + contaProprietario.getNomeUsuario());
 							} else
 								System.out.print("A senha está incorreta. Reinicie o processo.\n");
-						} else
-							System.out.print("Esse email não está cadastrado, por favor realize o cadastro.\n");
+						}
 					}
 				} else {
-					System.out.println("Não há contas de proprietários cadastradas no sistema!");
+					System.out.println("Esse email não está cadastrado, por favor realize o cadastro.\n");
 				}
 			}
 			break;
@@ -361,6 +356,12 @@ public class Main {
 			break;
 		case 3:
 			System.out.print(contaProprietario.getImoveisCadastrados());
+			System.out.println("Pressione qualuqer tecla para retornar\n");
+			String z = sc.nextLine();
+			if(z != null) {
+				sc.nextLine(); //limpando o scanner
+				break;
+			}
 			break;
 		case 4:
 			contaProprietario = null;

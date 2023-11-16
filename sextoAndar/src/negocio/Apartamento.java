@@ -19,7 +19,7 @@ public class Apartamento extends Imovel {
 		return precoCondominio+getValorDoImovel();
 	}
 	public String toString() {
-		return "Tipo de Imóvel selecionado: Apartamento\n" +
+		return "\nTipo de Imóvel selecionado: Apartamento\n" +
 			"Endereço: " + getEndereco() + "\n" +
 			"Tamanho do Imóvel: " + getTamanhoImovel() + "\n" +
 			"Andar: "+getAndar()+"\n"+

@@ -26,7 +26,7 @@ public class Gerador_de_dados {
 	public static Proprietario geradorDeProprietario() {
 		Proprietario user = new Proprietario(nomes[random.nextInt(4)], numeros[random.nextInt(2)],
 				gerarEmail(), senha_geral);
-		for (int i=0; i< random.nextInt(3)+1;i++) {
+		for (int i=0; i< random.nextInt(4)+1;i++) {
 			if(random.nextBoolean()) {
 				user.cadastrarImovel(geradorDeCasa());
 			}else {
