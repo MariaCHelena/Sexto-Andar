@@ -241,7 +241,7 @@ public class Main {
 		                String anychar = sc.nextLine(); // Limpa o buffer do scanner
 		                if (anychar != null ) break;
 		        }
-		        if (opcao != 1 || opcao != 2) break; //encerrando processo por erro do usuario
+		        if (opcao != 1 && opcao != 2) break; //encerrando processo por erro do usuario
 				System.out.print("Digite o preço do terreno em que o Imovel se localiza:\n");
 				double precoTerreno = sc.nextDouble();
 				sc.nextLine(); // Limpa o buffer do scanner
@@ -249,9 +249,9 @@ public class Main {
 						+ "1 - Sim\n"
 						+ "2 - Não\n");
 				boolean casaUnicaTerreno = true;
-				opcao = sc.nextInt();
+				int opcao1 = sc.nextInt();
 				sc.nextLine(); // limpando buffer
-				switch(opcao) {
+				switch(opcao1) {
 					case 1: casaUnicaTerreno = true; break;
 					case 2: casaUnicaTerreno = false; break;
 					default:
@@ -262,6 +262,7 @@ public class Main {
 							break;
 						}
 				}
+				if (opcao1 != 1 && opcao1 != 2) break; //encerrando processo por erro do usuario
 				Casa casa = new Casa(endereco,tamanhoimovel,descricao,valorimovel,data,
 						tipoDeVenda,precoTerreno,casaUnicaTerreno);
 				contaProprietario.cadastrarImovel(casa);
@@ -289,10 +290,10 @@ public class Main {
 		        System.out.print("O condominio possui area de convivencia:\n"
 		                + "1 - Sim\n"
 		                + "2 - Não\n");
-		        int opcao1 = sc.nextInt();
+		        int opcao2 = sc.nextInt();
 		        sc.nextLine(); // limpando scanner
-		        boolean areaconvivencia = (opcao1 == 1? true : false);
-		        switch(opcao1) {
+		        boolean areaconvivencia = (opcao2 == 1? true : false);
+		        switch(opcao2) {
 		            case 1: areaconvivencia = true; break;
 		            case 2: areaconvivencia = false; break;
 		            default:
@@ -300,6 +301,7 @@ public class Main {
 		                sc.nextLine(); // Limpa o buffer do scanner
 		                break;
 		        }
+		        if (opcao2 != 1 && opcao2 != 2) break; //encerrando processo por erro do usuario
 		        System.out.println("Selecione o tipo de venda: " + "\n1 - Aluguel\n2 - Venda");
 		        int opcao6 = sc.nextInt();
 		        sc.nextLine(); //limpando buffer
@@ -312,16 +314,16 @@ public class Main {
 		                sc.nextLine(); // Limpa o buffer do scanner
 		                break;
 		        }
+		        if (opcao6 != 1 && opcao6 != 2) break; //encerrando processo por erro do usuario
 				System.out.print("Digite o preço do terreno em que o Imovel se localiza:\n");
 				double precoCondominio = sc.nextDouble();
 				sc.nextLine(); // Limpa o buffer do scanner
 				System.out.print("É permitido animais:\n"
 						+ "1 - Sim\n"
 						+ "2 - Não\n");
-				opcao = sc.nextInt();
-				sc.nextLine();
-				boolean pet = (opcao == 1 ? true : false);
-				switch(opcao) {
+				int opcao9 = sc.nextInt();
+				boolean pet = (opcao9 == 1 ? true : false);
+				switch(opcao9) {
 					case 1: pet = true; break;
 					case 2: pet = false; break;
 					default:
@@ -332,6 +334,8 @@ public class Main {
 							break;
 						}
 				}
+				if (opcao9 != 1 && opcao9 != 2) break; //encerrando processo por erro do usuario
+				System.out.print("Digite em qual andar se localiza o apartamento:\n");
 				int andar = sc.nextInt(); 
 				Apartamento aptm = new Apartamento(endereco1,tamanhoimovel1,descricao1,valorimovel1,data1,
 						tipoDeVendaApartamento,precoCondominio,areaconvivencia,andar,pet);
