@@ -231,15 +231,17 @@ public class Main {
 		                + "1 - Aluguel\n"
 		                + "2 - Venda\n");
 		        int opcao = sc.nextInt();
+		        sc.nextLine(); //limpando buffer
 		        TipoDeVenda tipoDeVenda = null;
 		        switch(opcao) {
 		            case 1: tipoDeVenda = TipoDeVenda.ALUGUEL; break;
 		            case 2: tipoDeVenda = TipoDeVenda.VENDA; break;
 		            default:
 		                System.out.println("Opção inválida, pressione qualquer tecla para continuar.\n");
-		                sc.nextLine(); // Limpa o buffer do scanner
-		                break;
+		                String anychar = sc.nextLine(); // Limpa o buffer do scanner
+		                if (anychar != null ) break;
 		        }
+		        if (opcao != 1 || opcao != 2) break; //encerrando processo por erro do usuario
 				System.out.print("Digite o preço do terreno em que o Imovel se localiza:\n");
 				double precoTerreno = sc.nextDouble();
 				sc.nextLine(); // Limpa o buffer do scanner
@@ -248,6 +250,7 @@ public class Main {
 						+ "2 - Não\n");
 				boolean casaUnicaTerreno = true;
 				opcao = sc.nextInt();
+				sc.nextLine(); // limpando buffer
 				switch(opcao) {
 					case 1: casaUnicaTerreno = true; break;
 					case 2: casaUnicaTerreno = false; break;
@@ -271,7 +274,7 @@ public class Main {
 				}
 				break;
 			case 2:
-				System.out.print("Digite o endereço no qual se localiza a casa:\n");
+				System.out.print("Digite o endereço no qual se localiza o apartamento:\n");
 		        String endereco1 = sc.nextLine();
 		        System.out.print("Digite o tamanho do seu imovel em metros quadrados:\n");
 		        double tamanhoimovel1 = sc.nextDouble();
@@ -299,6 +302,7 @@ public class Main {
 		        }
 		        System.out.println("Selecione o tipo de venda: " + "\n1 - Aluguel\n2 - Venda");
 		        int opcao6 = sc.nextInt();
+		        sc.nextLine(); //limpando buffer
 		        TipoDeVenda tipoDeVendaApartamento = null;
 		        switch(opcao6) {
 		            case 1: tipoDeVendaApartamento = TipoDeVenda.ALUGUEL; break;
@@ -314,8 +318,9 @@ public class Main {
 				System.out.print("É permitido animais:\n"
 						+ "1 - Sim\n"
 						+ "2 - Não\n");
-				boolean pet = true;
 				opcao = sc.nextInt();
+				sc.nextLine();
+				boolean pet = (opcao == 1 ? true : false);
 				switch(opcao) {
 					case 1: pet = true; break;
 					case 2: pet = false; break;
@@ -327,7 +332,6 @@ public class Main {
 							break;
 						}
 				}
-				sc.nextLine();
 				int andar = sc.nextInt(); 
 				Apartamento aptm = new Apartamento(endereco1,tamanhoimovel1,descricao1,valorimovel1,data1,
 						tipoDeVendaApartamento,precoCondominio,areaconvivencia,andar,pet);
