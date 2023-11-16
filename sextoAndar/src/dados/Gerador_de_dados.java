@@ -21,6 +21,7 @@ public class Gerador_de_dados {
 				senha_geral);
 		return user;
 	}
+	public TipoDeVenda tipoDeVenda;
 
 	public Proprietario geradorDeProprietario() {
 		Proprietario user = new Proprietario(nomes[random.nextInt(4)], numeros[random.nextInt(2)],
@@ -36,14 +37,22 @@ public class Gerador_de_dados {
 	}
 
 	public Casa geradorDeCasa() {
+		switch(random.nextInt(1)+1) {
+		case 1: tipoDeVenda = TipoDeVenda.ALUGUEL;break;
+		case 2: tipoDeVenda = TipoDeVenda.VENDA;break;
+		}
 		Casa casa = new Casa(endereco[random.nextInt(4)], random.nextDouble(132.00) + 32, descricao[random.nextInt(4)],
-				random.nextDouble(2000000.00) + 541200.00, datas[random.nextInt(4)], random.nextBoolean(),
+				random.nextDouble(2000000.00) + 541200.00, datas[random.nextInt(4)], tipoDeVenda,
 				random.nextDouble(500000.00) + 500000.00, random.nextBoolean());
 		return casa;
 	}
 	public Apartamento geradorDeApartamento() {
+		switch(random.nextInt(1)+1) {
+		case 1: tipoDeVenda = TipoDeVenda.ALUGUEL;break;
+		case 2: tipoDeVenda = TipoDeVenda.VENDA;break;
+		}
 		Apartamento apt = new Apartamento(endereco[random.nextInt(4)], random.nextDouble(132.00) + 32, descricao[random.nextInt(4)],
-				random.nextDouble(2000000.00) + 541200.00, datas[random.nextInt(4)], random.nextBoolean(),
+				random.nextDouble(2000000.00) + 541200.00, datas[random.nextInt(4)], tipoDeVenda,
 				random.nextDouble(400),random.nextBoolean(),random.nextInt(8),random.nextBoolean());
 		return apt;
 	}
