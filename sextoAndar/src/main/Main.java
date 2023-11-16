@@ -2,8 +2,12 @@ package main;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
-import negocio.*;
-import dados.Gerador_de_dados;
+
+import negocio.Apartamento;
+import negocio.Casa;
+import negocio.Proprietario;
+import negocio.TipoDeVenda;
+import negocio.Usuario;
 
 public class Main {
 	public static ArrayList<Proprietario> listaDeProprietario = new ArrayList<>();
@@ -227,10 +231,10 @@ public class Main {
 		                + "1 - Aluguel\n"
 		                + "2 - Venda\n");
 		        int opcao = sc.nextInt();
-		        boolean tipoDeVenda = true;
+		        TipoDeVenda tipoDeVenda = null;
 		        switch(opcao) {
-		            case 1: tipoDeVenda = true; break;
-		            case 2: tipoDeVenda = false; break;
+		            case 1: tipoDeVenda = TipoDeVenda.ALUGUEL; break;
+		            case 2: tipoDeVenda = TipoDeVenda.VENDA; break;
 		            default:
 		                System.out.println("Opção inválida, pressione qualquer tecla para continuar.\n");
 		                sc.nextLine(); // Limpa o buffer do scanner
@@ -283,7 +287,8 @@ public class Main {
 		                + "1 - Sim\n"
 		                + "2 - Não\n");
 		        int opcao1 = sc.nextInt();
-		        boolean areaconvivencia = false;
+		        sc.nextLine(); // limpando scanner
+		        boolean areaconvivencia = (opcao1 == 1? true : false);
 		        switch(opcao1) {
 		            case 1: areaconvivencia = true; break;
 		            case 2: areaconvivencia = false; break;
@@ -292,11 +297,12 @@ public class Main {
 		                sc.nextLine(); // Limpa o buffer do scanner
 		                break;
 		        }
+		        System.out.println("Selecione o tipo de venda: " + "\n1 - Aluguel\n2 - Venda");
 		        int opcao6 = sc.nextInt();
-		        boolean tipoDeVenda1 = true;
+		        TipoDeVenda tipoDeVendaApartamento = null;
 		        switch(opcao6) {
-		            case 1: tipoDeVenda = true; break;
-		            case 2: tipoDeVenda = false; break;
+		            case 1: tipoDeVendaApartamento = TipoDeVenda.ALUGUEL; break;
+		            case 2: tipoDeVendaApartamento = TipoDeVenda.VENDA; break;
 		            default:
 		                System.out.println("Opção inválida, pressione qualquer tecla para continuar.\n");
 		                sc.nextLine(); // Limpa o buffer do scanner
@@ -324,7 +330,7 @@ public class Main {
 				sc.nextLine();
 				int andar = sc.nextInt(); 
 				Apartamento aptm = new Apartamento(endereco1,tamanhoimovel1,descricao1,valorimovel1,data1,
-						tipoDeVenda1,precoCondominio,areaconvivencia,andar,pet);
+						tipoDeVendaApartamento,precoCondominio,areaconvivencia,andar,pet);
 				contaProprietario.cadastrarImovel(aptm);
 				System.out.print("Seu imovel foi cadastrado com sucesso.\n");
 				System.out.println("Aperte qualquer tecla para continuar\n");
