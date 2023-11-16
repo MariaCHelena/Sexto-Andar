@@ -4,26 +4,26 @@ import negocio.*;
 import java.util.Random;
 
 public class Gerador_de_dados {
-	Random random = new Random();
-	private String[] nomes = { "Ana Maria", "João Pedro", "Paulo Jose", "Louro Jose", "Maria Clara" };
-	private String[] numeros = { "(61)9 91238-2741", "(61)9 98213-1234", "(61)9 93127-2124" };
-	private String senha_geral = "123";
-	private String[] endereco = { "Avenida Esbertalina Barbosa Damiani, Lote 14", "Travessa da CDL, Lote 23",
+	private static Random random = new Random();
+	private static String[] nomes = { "Ana Maria", "João Pedro", "Paulo Jose", "Louro Jose", "Maria Clara" };
+	private static String[] numeros = { "(61)9 91238-2741", "(61)9 98213-1234", "(61)9 93127-2124" };
+	private static String senha_geral = "123";
+	private static String[] endereco = { "Avenida Esbertalina Barbosa Damiani, Lote 14", "Travessa da CDL, Lote 23",
 			"Rua Arlindo Nogueira, Lote 62", "Avenida Afonso Pena, lote 5", "Rua Serra de Bragança, lote 54" };
-	private String[] descricao = { "Casa aconchegante com 3 quartos e jardim espaçoso.",
+	private static String[] descricao = { "Casa aconchegante com 3 quartos e jardim espaçoso.",
 			"Apartamento moderno com vista para a cidade.", "Chalé encantador nas montanhas, perfeito para relaxar.",
 			"Sobrado espaçoso com piscina e área de lazer.",
 			"Loft urbano com design contemporâneo e localização central." };
-	private String[] datas = { "15/03/2017", "22/08/2018", "07/01/2019", "14/06/2021", "03/11/2023" };
+	private static String[] datas = { "15/03/2017", "22/08/2018", "07/01/2019", "14/06/2021", "03/11/2023" };
 
-	public Usuario geradorDeUsuario() {
+	public static Usuario geradorDeUsuario() {
 		Usuario user = new Usuario(nomes[random.nextInt(4)], numeros[random.nextInt(2)], gerarEmail(),
 				senha_geral);
 		return user;
 	}
-	public TipoDeVenda tipoDeVenda;
+	public static TipoDeVenda tipoDeVenda;
 
-	public Proprietario geradorDeProprietario() {
+	public static Proprietario geradorDeProprietario() {
 		Proprietario user = new Proprietario(nomes[random.nextInt(4)], numeros[random.nextInt(2)],
 				gerarEmail(), senha_geral);
 		for (int i=0; i< random.nextInt(3)+1;i++) {
@@ -36,7 +36,7 @@ public class Gerador_de_dados {
 		return user;
 	}
 
-	public Casa geradorDeCasa() {
+	public static Casa geradorDeCasa() {
 		switch(random.nextInt(1)+1) {
 		case 1: tipoDeVenda = TipoDeVenda.ALUGUEL;break;
 		case 2: tipoDeVenda = TipoDeVenda.VENDA;break;
@@ -46,7 +46,7 @@ public class Gerador_de_dados {
 				random.nextDouble(500000.00) + 500000.00, random.nextBoolean());
 		return casa;
 	}
-	public Apartamento geradorDeApartamento() {
+	public static Apartamento geradorDeApartamento() {
 		switch(random.nextInt(1)+1) {
 		case 1: tipoDeVenda = TipoDeVenda.ALUGUEL;break;
 		case 2: tipoDeVenda = TipoDeVenda.VENDA;break;
@@ -56,7 +56,7 @@ public class Gerador_de_dados {
 				random.nextDouble(400),random.nextBoolean(),random.nextInt(8),random.nextBoolean());
 		return apt;
 	}
-	public String gerarEmail() {
+	public static String gerarEmail() {
 		int tamanhoString = 8;
 		String caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 		StringBuilder randomString = new StringBuilder(tamanhoString);

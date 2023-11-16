@@ -2,7 +2,7 @@ package main;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import dados.*;
 import negocio.Apartamento;
 import negocio.Casa;
 import negocio.Proprietario;
@@ -14,9 +14,11 @@ public class Main {
 	public static ArrayList<Usuario> listaDeUsuario = new ArrayList<>();
 	public static Usuario contaUsuario, keep, sc;
 	public static Proprietario contaProprietario;
-
 	public static void main(String[] args) {
-
+		for (int i = 0; i <10 ; i++) {
+			listaDeProprietario.add(Gerador_de_dados.geradorDeProprietario());
+		}
+		System.out.print(listaDeProprietario);
 		// Criando conta para facilitar os testes
 		Usuario conta = new Usuario("Maria", "celular", "maria@gmail.com", "123");
 		Proprietario prop = new Proprietario("Victor","931293912", "victor@gmail.com", "123");
@@ -72,11 +74,10 @@ public class Main {
 								System.out.println("Autenticado como: " + contaUsuario.getNomeUsuario());
 							} else
 								System.out.print("A senha está incorreta. Reinicie o processo.\n");
-						} else
-							System.out.print("Esse email não está cadastrado, por favor realize o cadastro.\n");
+						}	
 					}
 				} else {
-					System.out.println("Não há usuários cadastrados no sistema!");
+					System.out.println("Esse email não está cadastrado, por favor realize o cadastro.\\n");
 				}
 
 			} else if (selecaoLogin == 2) { // PROGRAMAR AS OPÇÕES DE PROPRIETARIOS NESSE ESCOPO
@@ -194,8 +195,9 @@ public class Main {
 		System.out.print("Selecione a Opção desejada:\n" 
 				+ "1 - Visualizar dados da Conta.\n" 
 				+ "2 - Cadastrar Imovel.\n"
-				+ "3 - Deslogar\n"
-				+ "4 - Sair do sistema\n");
+				+ "3 - Visualizar Imoveis\n"
+				+ "4 - Deslogar\n"
+				+ "5 - Sair do sistema\n");
 		int selecaoConta = sc.nextInt();
 		switch (selecaoConta) {
 		case 1:
@@ -358,9 +360,12 @@ public class Main {
 			}
 			break;
 		case 3:
-			contaProprietario = null;
+			System.out.print(contaProprietario.getImoveisCadastrados());
 			break;
 		case 4:
+			contaProprietario = null;
+			break;
+		case 5:
 			keep = false;
 			break;
 		default:
