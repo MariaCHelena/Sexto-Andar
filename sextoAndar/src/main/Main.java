@@ -1,9 +1,16 @@
 package main;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Scanner;
-import dados.*;
-import negocio.*;
+
+import dados.Gerador_de_dados;
+import negocio.Apartamento;
+import negocio.ArrayListPersonalizado;
+import negocio.Casa;
+import negocio.Conta;
+import negocio.Proprietario;
+import negocio.TipoConta;
+import negocio.TipoDeVenda;
+import negocio.Usuario;
 
 public class Main {
 	public static ArrayListPersonalizado<Proprietario> listaDeProprietario = new ArrayListPersonalizado<>();
@@ -14,7 +21,7 @@ public class Main {
 		for (int i = 0; i <10 ; i++) {
 			listaDeProprietario.add(Gerador_de_dados.geradorDeProprietario()); //gerando contas de proprietarios e imoveis
 		} 
-		System.out.print(listaDeProprietario);
+		// System.out.print(listaDeProprietario);
 		// Criando conta para facilitar os testes
 		Usuario conta = new Usuario("Maria", "celular", "maria@gmail.com", "123");
 		Proprietario prop = new Proprietario("Victor","931293912", "victor@gmail.com", "123");
@@ -32,10 +39,10 @@ public class Main {
 				}
 				//keep = (contaUsuario != null) ? exibirMenuLogadoUsuario(contaUsuario, keep, sc)
 				//		: exibirMenuLogadoProprietario(contaProprietario, keep, sc);
-				clearScreen();
+				System.out.println("");
 			} else {
 				keep = exibirMenuAutenticacao(keep, sc);
-				clearScreen();
+				System.out.println("");
 			}
 		} while (keep);
 
@@ -108,39 +115,19 @@ public class Main {
 			System.out.print("Selecione o tipo de conta que deseja cadastrar: \n" + "1. Usuario\n" + "2. Proprietario\n"
 					+ "3. Retornar\n");
 			int selecaoCadastro = sc.nextInt();
+			TipoConta contaSelecionada = null;
 			if (selecaoCadastro == 1) {
-				sc.nextLine();
-				System.out.print("Digite seu nome:\n");
-				String nome = sc.nextLine();
-				System.out.print("Digite seu numero de celular:\n");
-				String celular = sc.nextLine();
-				System.out.print("Digite seu email:\n");
-				String email = sc.nextLine();
-				System.out.print("Escolha uma senha para sua conta:\n");
-				String senha = sc.nextLine();
-				Usuario conta = new Usuario(nome, celular, email, senha);
-				listaDeUsuario.add(conta);
+				contaSelecionada = TipoConta.USUARIO;
+				cadastrarConta(sc, contaSelecionada);
 				System.out.print("Você foi cadastrado com sucesso. \nVolte ao menu inicial para realizar seu login.\n"
 						+ "1. Voltar ao menu inicial\n" + "2. Encerrar\n");
 				selecaoCadastro = sc.nextInt();
-				if (selecaoCadastro == 1) {
-					keep = true;
-				} // volta para o menu inicial
-				else {
+				if (selecaoCadastro == 2) {
 					keep = false;
 				}
 			} else if (selecaoCadastro == 2) {
-				sc.nextLine();
-				System.out.print("Digite seu nome:\n");
-				String nome = sc.nextLine();
-				System.out.print("Digite seu numero de celular:\n");
-				String celular = sc.nextLine();
-				System.out.print("Digite seu email:\n");
-				String email = sc.nextLine();
-				System.out.print("Escolha uma senha para sua conta:\n");
-				String senha = sc.nextLine();
-				Proprietario conta = new Proprietario(nome, celular, email, senha);
-				listaDeProprietario.add(conta);
+				contaSelecionada = TipoConta.PROPRIETARIO;
+				cadastrarConta(sc, contaSelecionada);
 				System.out.print("Você foi cadastrado com sucesso. \nVolte ao menu inicial para realizar seu login.\n"
 						+ "1. Voltar ao menu inicial\n" + "2. Encerrar\n");
 				selecaoCadastro = sc.nextInt();
@@ -172,7 +159,7 @@ public class Main {
 		int selecaoConta = sc.nextInt();
 		switch (selecaoConta) {
 		case 1:
-			clearScreen();
+			System.out.println("");
 			System.out.println(u);
 			System.out.print("Deseja editar seus dados? (s/n): ");
 			sc.nextLine(); // limpando o scanner
@@ -219,7 +206,7 @@ public class Main {
 		int selecaoConta = sc.nextInt();
 		switch (selecaoConta) {
 		case 1:
-			clearScreen();
+			System.out.println("");
 			System.out.println(c);
 			System.out.print("Deseja editar seus dados? (s/n): ");
 			sc.nextLine(); // limpando o scanner
@@ -418,8 +405,27 @@ public class Main {
 		return keep;
 	}
 
-	public static void clearScreen() {
-		System.out.println("\n");
+	public static void cadastrarConta(Scanner sc, TipoConta contaSelecionada) {
+		sc.nextLine();
+		System.out.print("Digite seu nome:\n");
+		String nome = sc.nextLine();
+		System.out.print("Digite seu numero de celular:\n");
+		String celular = sc.nextLine();
+		System.out.print("Digite seu email:\n");
+		String email = sc.nextLine();
+		System.out.print("Escolha uma senha para sua conta:\n");
+		String senha = sc.nextLine();
+		switch(contaSelecionada) {
+			case USUARIO:
+				Usuario contaUsuario = new Usuario(nome, celular, email, senha);
+				listaDeUsuario.add(contaUsuario);
+				break;
+			case PROPRIETARIO:
+				Proprietario contaProprietario = new Proprietario(nome, celular, email, senha);
+				listaDeProprietario.add(contaProprietario);
+				break;
+		}
+		return;
 	}
 
 }
