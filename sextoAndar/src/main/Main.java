@@ -72,8 +72,11 @@ public class Main {
 								System.out.print("A senha está incorreta. Reinicie o processo.\n");
 						}	
 					}
+					if(contaUsuario == null) {
+						System.out.println("Não há uma conta cadastrada com este email no sistema.");
+					}
 				} else {
-					System.out.println("Esse email não está cadastrado, por favor realize o cadastro.\\n");
+					System.out.println("Não há contas de usuário cadastradas no sistema. Por favor, efetue um cadastro.");
 				}
 
 			} else if (selecaoLogin == 2) { // PROGRAMAR AS OPÇÕES DE PROPRIETARIOS NESSE ESCOPO
@@ -93,8 +96,11 @@ public class Main {
 								System.out.print("A senha está incorreta. Reinicie o processo.\n");
 						}
 					}
+					if(contaProprietario == null) {
+						System.out.println("Não há uma conta cadastrada com este email no sistema.");
+					}
 				} else {
-					System.out.println("Esse email não está cadastrado, por favor realize o cadastro.\n");
+					System.out.println("Não há contas de proprietário cadastradas no sistema. Por favor, efetue o cadastro.");
 				}
 			}
 			break;
@@ -157,19 +163,36 @@ public class Main {
 		return keep;
 	}
 
-	public static boolean exibirMenuLogadoUsuario(Usuario c, boolean keep, Scanner sc) {
-		System.out.println("Logado como usuario: " + c.getNomeUsuario());
-		System.out.print("Selecione a Opção desejada:\n" + "1 - Visualizar dados da Conta.\n" + "2 - Deslogar.\n"
+	public static boolean exibirMenuLogadoUsuario(Usuario u, boolean keep, Scanner sc) {
+		System.out.println("Logado como usuario: " + u.getNomeUsuario());
+		System.out.print("Selecione a Opção desejada:\n" 
+				+ "1 - Visualizar dados da Conta.\n" 
+				+ "2 - Deslogar.\n"
 				+ "3 - Sair do sistema\n");
 		int selecaoConta = sc.nextInt();
 		switch (selecaoConta) {
 		case 1:
 			clearScreen();
-			System.out.println(c);
-			System.out.print("Aperte qualquer botão para voltar\n");
-			String a = sc.nextLine();
-			if(a != null) {
-				sc.nextLine(); //limpando o scanner
+			System.out.println(u);
+			System.out.print("Deseja editar seus dados? (s/n): ");
+			sc.nextLine(); // limpando o scanner
+			String selecaoResposta = sc.nextLine();
+			if(selecaoResposta.toLowerCase().charAt(0) == 's') {
+				System.out.print("Digite seu nome:\n");
+				String nome = sc.nextLine();
+				System.out.print("Digite seu numero de celular:\n");
+				String celular = sc.nextLine();
+				System.out.print("Digite seu email:\n");
+				String email = sc.nextLine();
+				System.out.print("Escolha uma nova senha para sua conta:\n");
+				String senha = sc.nextLine();
+				u.setNomeUsuario(nome);
+				u.setNumeroCelular(celular);
+				u.setEmail(email);
+				u.setSenha(senha);
+				System.out.println("Dados alterados com sucesso.");
+				break;
+			} else {
 				break;
 			}
 		case 2:

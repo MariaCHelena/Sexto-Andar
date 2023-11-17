@@ -26,6 +26,7 @@ public class Usuario extends Conta {
 		}
 	}
 	
+	@Override
 	public String toString() {
 		return "Conta de Usuário\n" + "------------------------\n" + "Nome do usuário cadastrado: " + this.nomeUsuario + 
 				"\nNúmero do celular cadastrado: " + this.numeroCelular +
