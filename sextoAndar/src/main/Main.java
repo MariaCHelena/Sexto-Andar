@@ -221,10 +221,25 @@ public class Main {
 		case 1:
 			clearScreen();
 			System.out.println(c);
-			System.out.print("Aperte qualquer botão para voltar\n");
-			String a = sc.nextLine();
-			if(a != null) {
-				sc.nextLine(); //limpando o scanner
+			System.out.print("Deseja editar seus dados? (s/n): ");
+			sc.nextLine(); // limpando o scanner
+			String selecaoResposta = sc.nextLine();
+			if(selecaoResposta.toLowerCase().charAt(0) == 's') {
+				System.out.print("Digite seu nome:\n");
+				String nome = sc.nextLine();
+				System.out.print("Digite seu numero de celular:\n");
+				String celular = sc.nextLine();
+				System.out.print("Digite seu email:\n");
+				String email = sc.nextLine();
+				System.out.print("Escolha uma nova senha para sua conta:\n");
+				String senha = sc.nextLine();
+				c.setNomeUsuario(nome);
+				c.setNumeroCelular(celular);
+				c.setEmail(email);
+				c.setSenha(senha);
+				System.out.println("Dados alterados com sucesso.");
+				break;
+			} else {
 				break;
 			}
 		case 2:
