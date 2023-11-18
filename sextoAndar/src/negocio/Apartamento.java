@@ -6,9 +6,9 @@ public class Apartamento extends Imovel {
 	private int andar;
 	private boolean pet;
 	public Apartamento(String endereco, double tamanhoImovel, String descricao, double valorDoImovel,
-			String dataPublicacao, TipoDeVenda tipoDeVenda, double precoCondominio, boolean areaDeConvivencia, 
+			String dataPublicacao, TipoDeVenda tipoDeVenda,Proprietario p, double precoCondominio, boolean areaDeConvivencia, 
 			int andar, boolean pet) {
-		super(endereco, tamanhoImovel, descricao, valorDoImovel, dataPublicacao, tipoDeVenda);
+		super(endereco, tamanhoImovel, descricao, valorDoImovel, dataPublicacao, tipoDeVenda,p);
 		this.precoCondominio = precoCondominio;
 		this.areaDeConvivencia = areaDeConvivencia;
 		this.andar = andar;
@@ -29,7 +29,8 @@ public class Apartamento extends Imovel {
 			"Tipo de Venda: " + (getTipoDeVenda().toString() == "ALUGUEL" ? "Aluguel" : "Venda") + "\n" +
 			"Preço do Condomínio: " + getPrecoCondominio() + "\n" +
 			"Possui Área de Convivência: " + (isAreaDeConvivencia() ? "Sim" : "Não")+"\n"+
-			"Permite pets: " + (isPet() ? "Sim" : "Não")+"\n";
+			"Permite pets: " + (isPet() ? "Sim" : "Não")+"\n"+
+			"Proprietario: "+ p.getNomeUsuario() + " ("+p.getEmail()+")\n";
 	}
 
 	public double getPrecoCondominio() {

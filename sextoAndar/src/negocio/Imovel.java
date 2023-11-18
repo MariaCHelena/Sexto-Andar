@@ -7,14 +7,16 @@ public abstract class Imovel {
 	protected double valorDoImovel;
 	protected String dataPublicacao;
 	protected TipoDeVenda tipoDeVenda;
+	protected Proprietario p;
 	public Imovel(String endereco, double tamanhoImovel, String descricao,
-			double valorDoImovel, String dataPublicacao, TipoDeVenda tipoDeVenda) {
+			double valorDoImovel, String dataPublicacao, TipoDeVenda tipoDeVenda, Proprietario p) {
 		this.endereco = endereco;
 		this.tamanhoImovel = tamanhoImovel;
 		this.descricao = descricao;
 		this.valorDoImovel = valorDoImovel;
 		this.dataPublicacao = dataPublicacao;
 		this.tipoDeVenda = tipoDeVenda; // true para aluguel e false para venda
+		this.p = p;
 	}
 	public void setTipoDeVenda(TipoDeVenda tipoDeVenda) {
 		this.tipoDeVenda = tipoDeVenda;

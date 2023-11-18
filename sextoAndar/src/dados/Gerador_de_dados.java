@@ -28,31 +28,31 @@ public class Gerador_de_dados {
 				gerarEmail(), senha_geral);
 		for (int i=0; i< random.nextInt(4)+1;i++) {
 			if(random.nextBoolean()) {
-				user.cadastrarImovel(geradorDeCasa());
+				user.cadastrarImovel(geradorDeCasa(user));
 			}else {
-				user.cadastrarImovel(geradorDeApartamento());
+				user.cadastrarImovel(geradorDeApartamento(user));
 			}
 		}
 		return user;
 	}
 
-	public static Casa geradorDeCasa() {
+	public static Casa geradorDeCasa(Proprietario p) {
 		switch(random.nextInt(1)+1) {
 		case 1: tipoDeVenda = TipoDeVenda.ALUGUEL;break;
 		case 2: tipoDeVenda = TipoDeVenda.VENDA;break;
 		}
 		Casa casa = new Casa(endereco[random.nextInt(4)], random.nextDouble(132.00) + 32, descricao[random.nextInt(4)],
-				random.nextDouble(2000000.00) + 541200.00, datas[random.nextInt(4)], tipoDeVenda,
+				random.nextDouble(2000000.00) + 541200.00, datas[random.nextInt(4)], tipoDeVenda,p,
 				random.nextDouble(500000.00) + 500000.00, random.nextBoolean());
 		return casa;
 	}
-	public static Apartamento geradorDeApartamento() {
+	public static Apartamento geradorDeApartamento(Proprietario p) {
 		switch(random.nextInt(1)+1) {
 		case 1: tipoDeVenda = TipoDeVenda.ALUGUEL;break;
 		case 2: tipoDeVenda = TipoDeVenda.VENDA;break;
 		}
 		Apartamento apt = new Apartamento(endereco[random.nextInt(4)], random.nextDouble(132.00) + 32, descricao[random.nextInt(4)],
-				random.nextDouble(2000000.00) + 541200.00, datas[random.nextInt(4)], tipoDeVenda,
+				random.nextDouble(2000000.00) + 541200.00, datas[random.nextInt(4)], tipoDeVenda,p,
 				random.nextDouble(400),random.nextBoolean(),random.nextInt(8),random.nextBoolean());
 		return apt;
 	}

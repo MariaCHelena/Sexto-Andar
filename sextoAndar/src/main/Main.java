@@ -296,7 +296,7 @@ public class Main {
 				}
 				if (opcao1 != 1 && opcao1 != 2) break; //encerrando processo por erro do usuario
 				Casa casa = new Casa(endereco,tamanhoimovel,descricao,valorimovel,data,
-						tipoDeVenda,precoTerreno,casaUnicaTerreno);
+						tipoDeVenda,contaProprietario,precoTerreno,casaUnicaTerreno);
 				contaProprietario.cadastrarImovel(casa);
 				System.out.print("Seu imovel foi cadastrado com sucesso.\n");
 				System.out.println("Aperte qualquer tecla para continuar\n");
@@ -370,7 +370,7 @@ public class Main {
 				System.out.print("Digite em qual andar se localiza o apartamento:\n");
 				int andar = sc.nextInt(); 
 				Apartamento aptm = new Apartamento(endereco1,tamanhoimovel1,descricao1,valorimovel1,data1,
-						tipoDeVendaApartamento,precoCondominio,areaconvivencia,andar,pet);
+						tipoDeVendaApartamento,contaProprietario,precoCondominio,areaconvivencia,andar,pet);
 				contaProprietario.cadastrarImovel(aptm);
 				System.out.print("Seu imovel foi cadastrado com sucesso.\n");
 				System.out.println("Aperte qualquer tecla para continuar\n");
@@ -578,7 +578,11 @@ public class Main {
 			}
 			break;
 		case 5:
-			
+			for (int i = 0; i<listaDeProprietario.size();i++) {
+				for (int j=0; j<listaDeProprietario.get(i).getImoveisCadastrados().size();j++) {
+					
+				}
+			}
 			break;
 		case 6:
 			keep = false;
