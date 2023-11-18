@@ -18,8 +18,11 @@ public class Main {
 	public static Usuario contaUsuario, keep, sc;
 	public static Proprietario contaProprietario;
 	public static void main(String[] args) {
-		for (int i = 0; i <10 ; i++) {
+		for (int i = 0; i <15 ; i++) {
 			listaDeProprietario.add(Gerador_de_dados.geradorDeProprietario()); //gerando contas de proprietarios e imoveis
+		} 
+		for (int i = 0; i <15 ; i++) {
+			listaDeUsuario.add(Gerador_de_dados.geradorDeUsuario()); //gerando contas de proprietarios e imoveis
 		} 
 		// System.out.print(listaDeProprietario);
 		// Criando conta para facilitar os testes
@@ -29,7 +32,8 @@ public class Main {
 		listaDeProprietario.add(prop);
 		
 		boolean keep = true;
-		Scanner sc = new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);		
+		
 		do {
 			if (contaUsuario != null || contaProprietario != null) {
 				if (contaUsuario != null) {
@@ -54,7 +58,9 @@ public class Main {
 	public static boolean exibirMenuAutenticacao(boolean keep, Scanner sc) {
 		int selecaoMenu = 0;
 		System.out.print("Seja bem vindo ao Sexto Andar. Selecione a opção desejada:\n" + "1. Realizar Login\n"
-				+ "2. Realizar Cadastro\n" + "3. Encerrar\n");
+				+ "2. Realizar Cadastro\n"
+						+ "3. Entrar como administrador\n"
+						+ "4. Encerrar\n");
 		selecaoMenu = sc.nextInt();
 		switch (selecaoMenu) {
 		case 1:
@@ -137,6 +143,10 @@ public class Main {
 			}
 			break;
 		case 3:
+			while(keep)keep = exibirMenuAdministrador(sc, keep);
+			keep = true;
+			break;
+		case 4:
 			keep = false;
 			break;
 		default:
@@ -404,7 +414,181 @@ public class Main {
 		}
 		return keep;
 	}
-
+	
+	
+	public static boolean exibirMenuAdministrador(Scanner sc, boolean keep) {
+		System.out.print("Seja bem vindo administrador, selecione a opção desejada:\n"
+				+ "1- Visualizar Usuarios cadastrados\n"
+				+ "2- Editar/Excluir Usuario\n"
+				+ "3- Visualizar Proprietarios cadastrados\n"
+				+ "4- Editar/Excluir Proprietarios\n"
+				+ "5- Visualzar Imoveis cadastrados\n"
+				+ "6- Voltar\n");
+		int opc = sc.nextInt();
+		sc.nextLine(); //limpar buffer
+		switch(opc) {
+		case 1:
+			for (int i=0 ; i<listaDeUsuario.size() ; i++) {
+				System.out.print(listaDeUsuario.get(i));
+				if (i/5 == listaDeUsuario.size()/5) {
+					System.out.print("\nVocê chegou ao fim da lista. Aperte qualquer botão para voltar ao menu.\n");
+					String qualquer = sc.nextLine();
+					if (qualquer != null) {
+						sc.nextLine();
+						break;
+					}
+				}
+				if(i%5 == 0 && i != 0) {
+					System.out.print("\nSelecione uma opcao:\n"
+							+ "1- Ver mais usuarios\n"
+							+ "2- Voltar para o menu\n");
+					int opcao = sc.nextInt();
+					sc.nextLine();
+					if (opcao ==1) continue;
+					else break;
+				}
+			}
+			break;
+		case 2:
+			System.out.print("Digite o email do usuario que deseja editar/excluir:\n");
+			String email = sc.nextLine();
+			sc.nextLine();
+			for (int i = 0; i<listaDeUsuario.size();i++) {
+				if(listaDeUsuario.get(i).getEmail().equals(email)) {
+					System.out.print("Você selecionou o seguinte Usuario:\n");
+					System.out.print(listaDeUsuario.get(i));
+					System.out.print("Selecione a opção desejada:\n"
+							+ "1- Editar dados\n"
+							+ "2- Apagar Usuario\n");
+					int opcione = sc.nextInt();
+					switch(opcione) {
+					case 1:
+						System.out.print("Digite o novo nome:\n");
+						String nome = sc.nextLine();
+						System.out.print("Digite o novo numero de celular:\n");
+						String celular = sc.nextLine();
+						System.out.print("Digite o novo email:\n");
+						String email1 = sc.nextLine();
+						System.out.print("Escolha uma nova senha para a conta:\n");
+						String senha = sc.nextLine();
+						listaDeUsuario.get(i).setNomeUsuario(nome);
+						listaDeUsuario.get(i).setNumeroCelular(celular);
+						listaDeUsuario.get(i).setEmail(email1);
+						listaDeUsuario.get(i).setSenha(senha);
+						System.out.println("Dados alterados com sucesso. Aperte qualquer tecla para continuar");
+						String continuar = sc.nextLine();
+						if(continuar != null) {
+							sc.nextLine();
+							break;
+						}
+						break;
+					case 2:
+						listaDeUsuario.remove(i);
+						System.out.print("Usuario removido com sucesso aperte qualquer tecla para continuar.");
+						String continuar1 = sc.nextLine();
+						if(continuar1 != null) {
+							sc.nextLine();
+							break;
+						}
+						break;
+					}
+				}else if(i == listaDeProprietario.size()-1) {
+					System.out.print("Não encontramos esse email na nossa base de proprietarios. Pressione qualquer tecla para continuar\n");
+					String continuar1 = sc.nextLine();
+					if(continuar1 != null) {
+						sc.nextLine();
+						break;
+					}
+				}
+			}
+			break;
+		case 3:
+			for (int i=0 ; i<listaDeProprietario.size() ; i++) {
+				System.out.print(listaDeProprietario.get(i));
+				if (i/5 == listaDeProprietario.size()/5) {
+					System.out.print("\nVocê chegou ao fim da lista. Aperte qualquer botão para voltar ao menu.\n");
+					String qualquer = sc.nextLine();
+					if (qualquer != null) {
+						sc.nextLine();
+						break;
+					}
+				}
+				if(i%5 == 0 && i != 0) {
+					System.out.print("\nSelecione uma opcao:\n"
+							+ "1- Ver mais proprietarios\n"
+							+ "2- Voltar para o menu\n");
+					int opcao = sc.nextInt();
+					sc.nextLine();
+					if (opcao ==1) continue;
+					else break;
+				}
+			}
+			break;
+		case 4:
+			System.out.print("Digite o email do Proprietario que deseja editar/excluir:\n");
+			String email3 = sc.nextLine();
+			for (int i = 0; i<listaDeProprietario.size();i++) {
+				if(listaDeProprietario.get(i).getEmail().equals(email3)) {
+					System.out.print("Você selecionou o seguinte Proprietario:\n");
+					System.out.print(listaDeProprietario.get(i));
+					System.out.print("Selecione a opção desejada:\n"
+							+ "1- Editar dados\n"
+							+ "2- Apagar Proprietario\n");
+					int opcione = sc.nextInt();
+					sc.nextLine();
+					switch(opcione) {
+					case 1:
+						System.out.print("Digite o novo nome:\n");
+						String nome = sc.nextLine();
+						System.out.print("Digite o novo numero de celular:\n");
+						String celular = sc.nextLine();
+						System.out.print("Digite o novo email:\n");
+						String email4 = sc.nextLine();
+						System.out.print("Escolha uma nova senha para a conta:\n");
+						String senha = sc.nextLine();
+						listaDeProprietario.get(i).setNomeUsuario(nome);
+						listaDeProprietario.get(i).setNumeroCelular(celular);
+						listaDeProprietario.get(i).setEmail(email4);
+						listaDeProprietario.get(i).setSenha(senha);
+						System.out.println("Dados alterados com sucesso. Aperte qualquer tecla para continuar");
+						String continuar = sc.nextLine();
+						if(continuar != null) {
+							sc.nextLine();
+							break;
+						}
+						break;
+					case 2:
+						listaDeProprietario.remove(i);
+						System.out.print("Proprietario removido com sucesso aperte qualquer tecla para continuar.");
+						String continuar1 = sc.nextLine();
+						if(continuar1 != null) {
+							sc.nextLine();
+							break;
+						}
+						break;
+					}
+				}else if(i == listaDeProprietario.size()-1) {
+					System.out.print("Não encontramos esse email na nossa base de proprietarios. Pressione qualquer tecla para continuar\n");
+					String continuar1 = sc.nextLine();
+					if(continuar1 != null) {
+						sc.nextLine();
+						break;
+					}
+				}
+			}
+			break;
+		case 5:
+			
+			break;
+		case 6:
+			keep = false;
+			break;
+		}
+		return keep;
+		
+	}
+	
+	
 	public static void cadastrarConta(Scanner sc, TipoConta contaSelecionada) {
 		sc.nextLine();
 		System.out.print("Digite seu nome:\n");
