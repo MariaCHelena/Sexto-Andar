@@ -6,9 +6,9 @@ public class Apartamento extends Imovel {
 	private int andar;
 	private boolean pet;
 	public Apartamento(String endereco, double tamanhoImovel, String descricao, double valorDoImovel,
-			String dataPublicacao, String tipoDeVenda, double precoCondominio, boolean areaDeConvivencia, int andar,
-			boolean pet) {
-		super(endereco, tamanhoImovel, descricao, valorDoImovel, dataPublicacao, tipoDeVenda);
+			String dataPublicacao, TipoDeVenda tipoDeVenda,Proprietario p, double precoCondominio, boolean areaDeConvivencia, 
+			int andar, boolean pet) {
+		super(endereco, tamanhoImovel, descricao, valorDoImovel, dataPublicacao, tipoDeVenda,p);
 		this.precoCondominio = precoCondominio;
 		this.areaDeConvivencia = areaDeConvivencia;
 		this.andar = andar;
@@ -19,17 +19,18 @@ public class Apartamento extends Imovel {
 		return precoCondominio+getValorDoImovel();
 	}
 	public String toString() {
-		return "Tipo de Imóvel selecionado: Apartamento\n" +
+		return "\nTipo de Imóvel selecionado: Apartamento\n" +
 			"Endereço: " + getEndereco() + "\n" +
 			"Tamanho do Imóvel: " + getTamanhoImovel() + "\n" +
 			"Andar: "+getAndar()+"\n"+
 			"Descrição: " + getDescricao() + "\n" +
 			"Valor do Imóvel: " + getValorDoImovel() + "\n" +
 			"Data de publicação: " + getDataPublicacao() + "\n" +
-			"Tipo de Venda: " + getTipoDeVenda() + "\n" +
+			"Tipo de Venda: " + (getTipoDeVenda().toString() == "ALUGUEL" ? "Aluguel" : "Venda") + "\n" +
 			"Preço do Condomínio: " + getPrecoCondominio() + "\n" +
 			"Possui Área de Convivência: " + (isAreaDeConvivencia() ? "Sim" : "Não")+"\n"+
-			"Permite pets: " + (isPet() ? "Sim" : "Não")+"\n";
+			"Permite pets: " + (isPet() ? "Sim" : "Não")+"\n"+
+			"Proprietario: "+ p.getNomeUsuario() + " ("+p.getEmail()+")\n";
 	}
 
 	public double getPrecoCondominio() {

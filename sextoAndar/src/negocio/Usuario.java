@@ -1,10 +1,8 @@
 package negocio;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class Usuario extends Conta {
-	private List<Imovel> imoveisFavoritos = new ArrayList<>();
+	private List<Imovel> imoveisFavoritos = new ArrayListPersonalizado<>();
 
 	public Usuario(String nomeUsuario, String numeroCelular, String email, String senha) {
 		super(nomeUsuario, numeroCelular, email, senha);
@@ -28,6 +26,7 @@ public class Usuario extends Conta {
 		}
 	}
 	
+	@Override
 	public String toString() {
 		return "Conta de Usuário\n" + "------------------------\n" + "Nome do usuário cadastrado: " + this.nomeUsuario + 
 				"\nNúmero do celular cadastrado: " + this.numeroCelular +
