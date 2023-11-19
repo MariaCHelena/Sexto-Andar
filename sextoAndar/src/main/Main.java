@@ -24,7 +24,8 @@ public class Main {
 		} 
 		for (int i = 0; i <15 ; i++) {
 			listaDeUsuario.add(Gerador_de_dados.geradorDeUsuario()); //gerando contas de proprietarios e imoveis
-		} 
+		}
+		listaDeImoveis = Gerador_de_dados.imoveisCadastrados;
 		// System.out.print(listaDeProprietario);
 		// Criando conta para facilitar os testes
 		Usuario conta = new Usuario("Maria", "celular", "maria@gmail.com", "123");
@@ -108,8 +109,10 @@ public class Main {
 							if (p.getSenha().equals(senha)) {
 								contaProprietario = p;
 								System.out.println("Autenticado como: " + contaProprietario.getNomeUsuario());
-							} else
+							} else {
 								System.out.print("A senha está incorreta. Reinicie o processo.\n");
+							 	break;
+							}
 						}
 					}
 					if(contaProprietario == null) {
