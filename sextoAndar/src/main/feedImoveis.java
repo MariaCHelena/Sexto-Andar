@@ -1,5 +1,5 @@
 package main;
-import negocio.*;
+
 public class feedImoveis {
 	private int quantidadeDeImoveis;
 	
