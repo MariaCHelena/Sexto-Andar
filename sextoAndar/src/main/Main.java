@@ -552,7 +552,7 @@ public class Main {
 						listaDeProprietario.get(i).setNumeroCelular(celular);
 						listaDeProprietario.get(i).setEmail(email4);
 						listaDeProprietario.get(i).setSenha(senha);
-						System.out.println("Dados alterados com sucesso. Aperte qualquer tecla para continuar");
+						System.out.println("\nDados alterados com sucesso. Aperte qualquer tecla para continuar");
 						String continuar = sc.nextLine();
 						if(continuar != null) {
 							sc.nextLine();
@@ -561,7 +561,7 @@ public class Main {
 						break;
 					case 2:
 						listaDeProprietario.remove(i);
-						System.out.print("Proprietario removido com sucesso aperte qualquer tecla para continuar.");
+						System.out.print("\nProprietario removido com sucesso aperte qualquer tecla para continuar.");
 						String continuar1 = sc.nextLine();
 						if(continuar1 != null) {
 							sc.nextLine();
@@ -570,7 +570,7 @@ public class Main {
 						break;
 					}
 				}else if(i == listaDeProprietario.size()-1) {
-					System.out.print("Não encontramos esse email na nossa base de proprietarios. Pressione qualquer tecla para continuar\n");
+					System.out.print("\nNão encontramos esse email na nossa base de proprietarios. Pressione qualquer tecla para continuar\n");
 					String continuar1 = sc.nextLine();
 					if(continuar1 != null) {
 						sc.nextLine();
@@ -604,7 +604,21 @@ public class Main {
 				}
 			break;
 		case 6:
-			keep = false;
+			System.out.print("\n Digite o email do proprietario do imovel que você deseja excluir:\n");
+			String emailprop = sc.nextLine();
+			for (int i = 0 ; i<listaDeProprietario.size() ; i++) {
+				if(listaDeProprietario.get(i).getEmail().equals(emailprop)) {
+					
+					break;
+				}else if (i == listaDeProprietario.size()-1) {
+					System.out.print("\n Não encontramos esse proprietario na nossa base de dados. Pressione qualquer tecla para continuar.\n");
+					String continuar1 = sc.nextLine();
+					if(continuar1 != null) {
+						sc.nextLine();
+						break;
+					}
+				}
+			}
 			break;
 		case 7:
 			keep = false;
@@ -617,7 +631,7 @@ public class Main {
 	
 	public static void cadastrarConta(Scanner sc, TipoConta contaSelecionada) {
 		sc.nextLine();
-		System.out.print("Digite seu nome:\n");
+		System.out.print("\nDigite seu nome:\n");
 		String nome = sc.nextLine();
 		System.out.print("Digite seu numero de celular:\n");
 		String celular = sc.nextLine();
