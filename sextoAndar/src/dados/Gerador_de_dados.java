@@ -42,20 +42,16 @@ public class Gerador_de_dados {
 	}
 
 	public static Casa geradorDeCasa(Proprietario p) {
-		switch(random.nextInt(0, 1)) {
-		case 1: tipoDeVenda = TipoDeVenda.ALUGUEL;break;
-		case 2: tipoDeVenda = TipoDeVenda.VENDA;break;
-		}
+		if (random.nextBoolean()) tipoDeVenda = TipoDeVenda.ALUGUEL;
+		else tipoDeVenda = TipoDeVenda.VENDA;
 		Casa casa = new Casa(endereco[random.nextInt(4)], random.nextDouble(132.00) + 32, descricao[random.nextInt(4)],
 				random.nextDouble(2000000.00) + 541200.00, datas[random.nextInt(4)], tipoDeVenda,p,
 				random.nextDouble(500000.00) + 500000.00, random.nextBoolean());
 		return casa;
 	}
 	public static Apartamento geradorDeApartamento(Proprietario p) {
-		switch(random.nextInt(0, 1)) {
-		case 0: tipoDeVenda = TipoDeVenda.ALUGUEL;break;
-		case 1: tipoDeVenda = TipoDeVenda.VENDA;break;
-		}
+		if (random.nextBoolean()) tipoDeVenda = TipoDeVenda.ALUGUEL;
+		else tipoDeVenda = TipoDeVenda.VENDA;
 		Apartamento apt = new Apartamento(endereco[random.nextInt(4)], random.nextDouble(132.00) + 32, descricao[random.nextInt(4)],
 				random.nextDouble(2000000.00) + 541200.00, datas[random.nextInt(4)], tipoDeVenda,p,
 				random.nextDouble(400),random.nextBoolean(),random.nextInt(8),random.nextBoolean());
