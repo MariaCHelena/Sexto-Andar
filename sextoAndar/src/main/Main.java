@@ -1,6 +1,7 @@
 package main;
 import java.time.LocalDate;
 import java.util.Scanner;
+import java.util.Collections;
 import dados.Gerador_de_dados;
 import negocio.*;
 
@@ -579,12 +580,28 @@ public class Main {
 			}
 			break;
 		case 5:
-			ArrayListPersonalizado<Imovel> listaDeImoveis = new ArrayListPersonalizado<>(); 
-			for (int i = 0; i<listaDeProprietario.size();i++) {
-				for (int j=0; j<listaDeProprietario.get(i).getImoveisCadastrados().size();j++) {
-					
+			ArrayListPersonalizado<Imovel> Exibir = listaDeImoveis;
+			Collections.shuffle(Exibir);
+				for (int k=0 ; k<Exibir.size() ; k++) {
+					System.out.print(Exibir.get(k));
+					if (k/5 == Exibir.size()/5) {
+						System.out.print("\nVocê chegou ao fim da lista. Aperte qualquer botão para voltar ao menu.\n");
+						String qualquer = sc.nextLine();
+						if (qualquer != null) {
+							sc.nextLine();
+							break;
+						}
+					}
+					if(k%5 == 0 && k != 0) {
+						System.out.print("\nSelecione uma opcao:\n"
+								+ "1- Ver mais Imoveis\n"
+								+ "2- Voltar para o menu\n");
+						int opcao = sc.nextInt();
+						sc.nextLine();
+						if (opcao ==1) continue;
+						else break;
+					}
 				}
-			}
 			break;
 		case 6:
 			keep = false;
