@@ -16,7 +16,7 @@ public class Casa extends Imovel {
 			"Descrição: " + getDescricao() + "\n" +
 			"Valor do Imóvel: " + getValorDoImovel() + "\n" +
 			"Data de publicação: " + getDataPublicacao() + "\n" +
-			"Tipo de Venda: " + (getTipoDeVenda().toString() == "ALUGUEL" ? "Aluguel" : "Venda")+ "\n" +
+			"Tipo de Venda: " + (getTipoDeVenda() == TipoDeVenda.ALUGUEL ? "Aluguel" : "Venda")+ "\n" +
 			"Preço do Terreno: " + getPrecoTerreno() + "\n" +
 			"Casa única no terreno: " + (isCasaUnicaNoTerreno() ? "Sim" : "Não")+"\n"+
 			"Proprietario: "+ p.getNomeUsuario() + " ("+p.getEmail()+")\n";

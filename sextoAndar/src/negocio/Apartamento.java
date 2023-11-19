@@ -26,7 +26,7 @@ public class Apartamento extends Imovel {
 			"Descrição: " + getDescricao() + "\n" +
 			"Valor do Imóvel: " + getValorDoImovel() + "\n" +
 			"Data de publicação: " + getDataPublicacao() + "\n" +
-			"Tipo de Venda: " + (getTipoDeVenda().toString() == "ALUGUEL" ? "Aluguel" : "Venda") + "\n" +
+			"Tipo de Venda: " + (getTipoDeVenda() == TipoDeVenda.ALUGUEL ? "Aluguel" : "Venda") + "\n" +
 			"Preço do Condomínio: " + getPrecoCondominio() + "\n" +
 			"Possui Área de Convivência: " + (isAreaDeConvivencia() ? "Sim" : "Não")+"\n"+
 			"Permite pets: " + (isPet() ? "Sim" : "Não")+"\n"+

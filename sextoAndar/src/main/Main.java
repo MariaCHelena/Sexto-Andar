@@ -2,16 +2,9 @@ package main;
 
 import java.time.LocalDate;
 import java.util.Scanner;
-
+import java.util.Collections;
 import dados.Gerador_de_dados;
-import negocio.Apartamento;
-import negocio.ArrayListPersonalizado;
-import negocio.Casa;
-import negocio.Imovel;
-import negocio.Proprietario;
-import negocio.TipoConta;
-import negocio.TipoDeVenda;
-import negocio.Usuario;
+import negocio.*;
 
 public class Main {
 	public static ArrayListPersonalizado<Proprietario> listaDeProprietario = new ArrayListPersonalizado<>();
@@ -540,7 +533,7 @@ public class Main {
 						listaDeProprietario.get(i).setNumeroCelular(celular);
 						listaDeProprietario.get(i).setEmail(email4);
 						listaDeProprietario.get(i).setSenha(senha);
-						System.out.println("Dados alterados com sucesso. Aperte qualquer tecla para continuar");
+						System.out.println("\nDados alterados com sucesso. Aperte qualquer tecla para continuar");
 						String continuar = sc.nextLine();
 						if (continuar != null) {
 							sc.nextLine();
@@ -549,7 +542,7 @@ public class Main {
 						break;
 					case 2:
 						listaDeProprietario.remove(i);
-						System.out.print("Proprietario removido com sucesso aperte qualquer tecla para continuar.");
+						System.out.print("\nProprietario removido com sucesso aperte qualquer tecla para continuar.");
 						String continuar1 = sc.nextLine();
 						if (continuar1 != null) {
 							sc.nextLine();
@@ -557,9 +550,8 @@ public class Main {
 						}
 						break;
 					}
-				} else if (i == listaDeProprietario.size() - 1) {
-					System.out.print(
-							"Não encontramos esse email na nossa base de proprietarios. Pressione qualquer tecla para continuar\n");
+				}else if(i == listaDeProprietario.size()-1) {
+					System.out.print("\nNão encontramos esse email na nossa base de proprietarios. Pressione qualquer tecla para continuar\n");
 					String continuar1 = sc.nextLine();
 					if (continuar1 != null) {
 						sc.nextLine();
@@ -569,10 +561,45 @@ public class Main {
 			}
 			break;
 		case 5:
-			System.out.print(listaDeImoveis);
+			ArrayListPersonalizado<Imovel> Exibir = listaDeImoveis;
+			Collections.shuffle(Exibir);
+				for (int k=0 ; k<Exibir.size() ; k++) {
+					System.out.print(Exibir.get(k));
+					if (k/5 == Exibir.size()/5) {
+						System.out.print("\nVocê chegou ao fim da lista. Aperte qualquer botão para voltar ao menu.\n");
+						String qualquer = sc.nextLine();
+						if (qualquer != null) {
+							sc.nextLine();
+							break;
+						}
+					}
+					if(k%5 == 0 && k != 0) {
+						System.out.print("\nSelecione uma opcao:\n"
+								+ "1- Ver mais Imoveis\n"
+								+ "2- Voltar para o menu\n");
+						int opcao = sc.nextInt();
+						sc.nextLine();
+						if (opcao ==1) continue;
+						else break;
+					}
+				}
 			break;
 		case 6:
-			keep = false;
+			System.out.print("\n Digite o email do proprietario do imovel que você deseja excluir:\n");
+			String emailprop = sc.nextLine();
+			for (int i = 0 ; i<listaDeProprietario.size() ; i++) {
+				if(listaDeProprietario.get(i).getEmail().equals(emailprop)) {
+					
+					break;
+				}else if (i == listaDeProprietario.size()-1) {
+					System.out.print("\n Não encontramos esse proprietario na nossa base de dados. Pressione qualquer tecla para continuar.\n");
+					String continuar1 = sc.nextLine();
+					if(continuar1 != null) {
+						sc.nextLine();
+						break;
+					}
+				}
+			}
 			break;
 		case 7:
 			keep = false;
@@ -584,7 +611,7 @@ public class Main {
 
 	public static void cadastrarConta(Scanner sc, TipoConta contaSelecionada) {
 		sc.nextLine();
-		System.out.print("Digite seu nome:\n");
+		System.out.print("\nDigite seu nome:\n");
 		String nome = sc.nextLine();
 		System.out.print("Digite seu numero de celular:\n");
 		String celular = sc.nextLine();
