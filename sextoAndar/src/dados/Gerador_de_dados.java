@@ -15,6 +15,7 @@ public class Gerador_de_dados {
 			"Sobrado espaçoso com piscina e área de lazer.",
 			"Loft urbano com design contemporâneo e localização central." };
 	private static String[] datas = { "15/03/2017", "22/08/2018", "07/01/2019", "14/06/2021", "03/11/2023" };
+	public static ArrayListPersonalizado<Imovel> imoveisCadastrados = new ArrayListPersonalizado<>();
 
 	public static Usuario geradorDeUsuario() {
 		Usuario user = new Usuario(nomes[random.nextInt(4)], numeros[random.nextInt(2)], gerarEmail(),
@@ -28,9 +29,13 @@ public class Gerador_de_dados {
 				gerarEmail(), senha_geral);
 		for (int i=0; i< random.nextInt(4)+1;i++) {
 			if(random.nextBoolean()) {
-				user.cadastrarImovel(geradorDeCasa(user));
+				Imovel imovelProv = geradorDeCasa(user);
+				imoveisCadastrados.add(imovelProv);
+				user.cadastrarImovel(imoveisCadastrados.get(imoveisCadastrados.indexOf(imovelProv)));
 			}else {
-				user.cadastrarImovel(geradorDeApartamento(user));
+				Imovel imovelProv = geradorDeApartamento(user);
+				imoveisCadastrados.add(imovelProv);
+				user.cadastrarImovel(imoveisCadastrados.get(imoveisCadastrados.indexOf(imovelProv)));
 			}
 		}
 		return user;

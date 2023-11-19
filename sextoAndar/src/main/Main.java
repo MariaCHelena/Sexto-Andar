@@ -6,7 +6,7 @@ import dados.Gerador_de_dados;
 import negocio.Apartamento;
 import negocio.ArrayListPersonalizado;
 import negocio.Casa;
-import negocio.Conta;
+import negocio.Imovel;
 import negocio.Proprietario;
 import negocio.TipoConta;
 import negocio.TipoDeVenda;
@@ -15,6 +15,7 @@ import negocio.Usuario;
 public class Main {
 	public static ArrayListPersonalizado<Proprietario> listaDeProprietario = new ArrayListPersonalizado<>();
 	public static ArrayListPersonalizado<Usuario> listaDeUsuario = new ArrayListPersonalizado<>();
+	public static ArrayListPersonalizado<Imovel> listaDeImoveis = new ArrayListPersonalizado<>();
 	public static Usuario contaUsuario, keep, sc;
 	public static Proprietario contaProprietario;
 	public static void main(String[] args) {
@@ -81,8 +82,10 @@ public class Main {
 							if (p.getSenha().equals(senha)) {
 								contaUsuario = p;
 								System.out.println("Autenticado como: " + contaUsuario.getNomeUsuario());
-							} else
+							} else {
 								System.out.print("A senha está incorreta. Reinicie o processo.\n");
+							 	break;
+							}
 						}	
 					}
 					if(contaUsuario == null) {
@@ -297,7 +300,8 @@ public class Main {
 				if (opcao1 != 1 && opcao1 != 2) break; //encerrando processo por erro do usuario
 				Casa casa = new Casa(endereco,tamanhoimovel,descricao,valorimovel,data,
 						tipoDeVenda,contaProprietario,precoTerreno,casaUnicaTerreno);
-				contaProprietario.cadastrarImovel(casa);
+				listaDeImoveis.add(casa);
+				contaProprietario.cadastrarImovel(listaDeImoveis.get(listaDeImoveis.indexOf(casa)));
 				System.out.print("Seu imovel foi cadastrado com sucesso.\n");
 				System.out.println("Aperte qualquer tecla para continuar\n");
 				String g = sc.nextLine();
@@ -371,7 +375,8 @@ public class Main {
 				int andar = sc.nextInt(); 
 				Apartamento aptm = new Apartamento(endereco1,tamanhoimovel1,descricao1,valorimovel1,data1,
 						tipoDeVendaApartamento,contaProprietario,precoCondominio,areaconvivencia,andar,pet);
-				contaProprietario.cadastrarImovel(aptm);
+				listaDeImoveis.add(aptm);
+				contaProprietario.cadastrarImovel(listaDeImoveis.get(listaDeImoveis.indexOf(aptm)));
 				System.out.print("Seu imovel foi cadastrado com sucesso.\n");
 				System.out.println("Aperte qualquer tecla para continuar\n");
 				String j = sc.nextLine();
@@ -423,7 +428,8 @@ public class Main {
 				+ "3- Visualizar Proprietarios cadastrados\n"
 				+ "4- Editar/Excluir Proprietarios\n"
 				+ "5- Visualzar Imoveis cadastrados\n"
-				+ "6- Voltar\n");
+				+ "6- Excluir Imóveis cadastrados\n"
+				+ "7- Voltar\n");
 		int opc = sc.nextInt();
 		sc.nextLine(); //limpar buffer
 		switch(opc) {
@@ -578,13 +584,12 @@ public class Main {
 			}
 			break;
 		case 5:
-			for (int i = 0; i<listaDeProprietario.size();i++) {
-				for (int j=0; j<listaDeProprietario.get(i).getImoveisCadastrados().size();j++) {
-					
-				}
-			}
+			System.out.print(listaDeImoveis);
 			break;
 		case 6:
+			keep = false;
+			break;
+		case 7:
 			keep = false;
 			break;
 		}
