@@ -1,16 +1,8 @@
 package main;
 import java.time.LocalDate;
 import java.util.Scanner;
-
 import dados.Gerador_de_dados;
-import negocio.Apartamento;
-import negocio.ArrayListPersonalizado;
-import negocio.Casa;
-import negocio.Imovel;
-import negocio.Proprietario;
-import negocio.TipoConta;
-import negocio.TipoDeVenda;
-import negocio.Usuario;
+import negocio.*;
 
 public class Main {
 	public static ArrayListPersonalizado<Proprietario> listaDeProprietario = new ArrayListPersonalizado<>();
@@ -587,7 +579,12 @@ public class Main {
 			}
 			break;
 		case 5:
-			System.out.print(listaDeImoveis);
+			ArrayListPersonalizado<Imovel> listaDeImoveis = new ArrayListPersonalizado<>(); 
+			for (int i = 0; i<listaDeProprietario.size();i++) {
+				for (int j=0; j<listaDeProprietario.get(i).getImoveisCadastrados().size();j++) {
+					
+				}
+			}
 			break;
 		case 6:
 			keep = false;
