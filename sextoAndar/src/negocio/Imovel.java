@@ -8,6 +8,8 @@ public abstract class Imovel {
 	protected String dataPublicacao;
 	protected TipoDeVenda tipoDeVenda;
 	protected Proprietario p;
+	private ArrayListPersonalizado<Proposta> propostasRegistradas = new ArrayListPersonalizado<>();
+	private ArrayListPersonalizado<Visita> visitasAgendades = new ArrayListPersonalizado<>();
 	public Imovel(String endereco, double tamanhoImovel, String descricao,
 			double valorDoImovel, String dataPublicacao, TipoDeVenda tipoDeVenda, Proprietario p) {
 		this.endereco = endereco;
