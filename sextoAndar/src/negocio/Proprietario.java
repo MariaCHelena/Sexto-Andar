@@ -27,6 +27,10 @@ public class Proprietario extends Conta{
 		}
 		return mensagem;
 	}
+	
+	public void removerImovel(Imovel i) {
+		imoveisCadastrados.remove(i);
+	}
 
 	public String toString() {
 		return "\nConta de Proprietário\n" + "Nome do usuário cadastrado: " + this.nomeUsuario + 
