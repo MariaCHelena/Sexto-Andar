@@ -3,14 +3,7 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 import dados.Gerador_de_dados;
-import negocio.Apartamento;
-import negocio.ArrayListPersonalizado;
-import negocio.Casa;
-import negocio.Imovel;
-import negocio.Proprietario;
-import negocio.TipoConta;
-import negocio.TipoDeVenda;
-import negocio.Usuario;
+import negocio.*;
 
 public class Main {
 	public static ArrayListPersonalizado<Proprietario> listaDeProprietario = new ArrayListPersonalizado<>();
@@ -302,7 +295,7 @@ public class Main {
 				}
 				if (opcao1 != 1 && opcao1 != 2) break; //encerrando processo por erro do usuario
 				Casa casa = new Casa(endereco,tamanhoimovel,descricao,valorimovel,data,
-						tipoDeVenda,contaProprietario,precoTerreno,casaUnicaTerreno);
+						tipoDeVenda,contaProprietario,TipoDeImovel.CASA,precoTerreno,casaUnicaTerreno);
 				listaDeImoveis.add(casa);
 				contaProprietario.cadastrarImovel(listaDeImoveis.get(listaDeImoveis.indexOf(casa)));
 				System.out.print("Seu imovel foi cadastrado com sucesso.\n");
@@ -377,7 +370,7 @@ public class Main {
 				System.out.print("Digite em qual andar se localiza o apartamento:\n");
 				int andar = sc.nextInt(); 
 				Apartamento aptm = new Apartamento(endereco1,tamanhoimovel1,descricao1,valorimovel1,data1,
-						tipoDeVendaApartamento,contaProprietario,precoCondominio,areaconvivencia,andar,pet);
+						tipoDeVendaApartamento,contaProprietario,TipoDeImovel.APARTAMENTO,precoCondominio,areaconvivencia,andar,pet);
 				listaDeImoveis.add(aptm);
 				contaProprietario.cadastrarImovel(listaDeImoveis.get(listaDeImoveis.indexOf(aptm)));
 				System.out.print("Seu imovel foi cadastrado com sucesso.\n");

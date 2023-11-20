@@ -8,17 +8,22 @@ public abstract class Imovel {
 	protected String dataPublicacao;
 	protected TipoDeVenda tipoDeVenda;
 	protected Proprietario p;
+	protected TipoDeImovel tipoDeImovel;
 	private ArrayListPersonalizado<Proposta> propostasRegistradas = new ArrayListPersonalizado<>();
 	private ArrayListPersonalizado<Visita> visitasAgendades = new ArrayListPersonalizado<>();
-	public Imovel(String endereco, double tamanhoImovel, String descricao,
-			double valorDoImovel, String dataPublicacao, TipoDeVenda tipoDeVenda, Proprietario p) {
+	
+	
+	public Imovel(String endereco, double tamanhoImovel, String descricao, double valorDoImovel, String dataPublicacao,
+			TipoDeVenda tipoDeVenda, Proprietario p, TipoDeImovel tipoDeImovel) {
+		super();
 		this.endereco = endereco;
 		this.tamanhoImovel = tamanhoImovel;
 		this.descricao = descricao;
 		this.valorDoImovel = valorDoImovel;
 		this.dataPublicacao = dataPublicacao;
-		this.tipoDeVenda = tipoDeVenda; // true para aluguel e false para venda
+		this.tipoDeVenda = tipoDeVenda;
 		this.p = p;
+		this.tipoDeImovel = tipoDeImovel;
 	}
 	public void setTipoDeVenda(TipoDeVenda tipoDeVenda) {
 		this.tipoDeVenda = tipoDeVenda;
@@ -55,6 +60,30 @@ public abstract class Imovel {
 	}
 	public void setDataPublicacao(String dataPublicacao) {
 		this.dataPublicacao = dataPublicacao;
+	}
+	public Proprietario getP() {
+		return p;
+	}
+	public void setP(Proprietario p) {
+		this.p = p;
+	}
+	public TipoDeImovel getTipoDeImovel() {
+		return tipoDeImovel;
+	}
+	public void setTipoDeImovel(TipoDeImovel tipoDeImovel) {
+		this.tipoDeImovel = tipoDeImovel;
+	}
+	public ArrayListPersonalizado<Proposta> getPropostasRegistradas() {
+		return propostasRegistradas;
+	}
+	public void setPropostasRegistradas(ArrayListPersonalizado<Proposta> propostasRegistradas) {
+		this.propostasRegistradas = propostasRegistradas;
+	}
+	public ArrayListPersonalizado<Visita> getVisitasAgendades() {
+		return visitasAgendades;
+	}
+	public void setVisitasAgendades(ArrayListPersonalizado<Visita> visitasAgendades) {
+		this.visitasAgendades = visitasAgendades;
 	}
 	
 	

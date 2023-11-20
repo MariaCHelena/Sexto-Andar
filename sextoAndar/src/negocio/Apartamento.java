@@ -5,16 +5,17 @@ public class Apartamento extends Imovel {
 	private boolean areaDeConvivencia;
 	private int andar;
 	private boolean pet;
+	
+	
 	public Apartamento(String endereco, double tamanhoImovel, String descricao, double valorDoImovel,
-			String dataPublicacao, TipoDeVenda tipoDeVenda,Proprietario p, double precoCondominio, boolean areaDeConvivencia, 
-			int andar, boolean pet) {
-		super(endereco, tamanhoImovel, descricao, valorDoImovel, dataPublicacao, tipoDeVenda,p);
+			String dataPublicacao, TipoDeVenda tipoDeVenda, Proprietario p, TipoDeImovel tipoDeImovel,
+			double precoCondominio, boolean areaDeConvivencia, int andar, boolean pet) {
+		super(endereco, tamanhoImovel, descricao, valorDoImovel, dataPublicacao, tipoDeVenda, p, tipoDeImovel);
 		this.precoCondominio = precoCondominio;
 		this.areaDeConvivencia = areaDeConvivencia;
 		this.andar = andar;
 		this.pet = pet;
 	}
-	
 	public double calcularValorTotalDoApartamento(double precoCondominio, double valorDoImovel) {
 		return precoCondominio+getValorDoImovel();
 	}
