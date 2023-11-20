@@ -20,6 +20,10 @@ public class Proprietario extends Conta{
 		return true;
 	}
 
+	public void removerImovel(Imovel i) {
+		imoveisCadastrados.remove(i);
+	}
+
 	public String exibirImoveisCadastrados() {
 		String mensagem = "";
 		for (Imovel i : imoveisCadastrados) {
