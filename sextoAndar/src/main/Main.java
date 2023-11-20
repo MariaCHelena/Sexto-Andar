@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 import java.util.Collections;
+import java.util.Locale;
+
 import dados.Gerador_de_dados;
 import negocio.*;
 
@@ -15,6 +17,7 @@ public class Main {
 	public static Proprietario contaProprietario;
 
 	public static void main(String[] args) {
+		Locale.setDefault(Locale.US);
 		for (int i = 0; i < 15; i++) {
 			listaDeProprietario.add(Gerador_de_dados.geradorDeProprietario()); // gerando contas de proprietarios e
 																				// imoveis
@@ -198,11 +201,8 @@ public class Main {
 			}
 		case 2:
 			System.out.println("VEJA NOSSOS IMÓVEIS:");
-
-//			Scanner scan = new Scanner(System.in);
-//			keep = feedImoveis.exibirImoveis(sc, listaDeImoveis);
 			sc.nextLine();
-			for (int i = 0; i < listaDeImoveis.size(); i++) {
+			for (int i = listaDeImoveis.size()-1; i >= 0; i--) {
 
 				boolean verificar = false;
 				do {
@@ -228,12 +228,12 @@ public class Main {
 								+ "1 - Continuar a visualizar os Imóveis.\n" + "2 - Voltar ao menu anterior.");
 						int respostaVisita = sc.nextInt();
 						if (respostaVisita == 2) {
-							i = listaDeImoveis.size();
+							i = -1;
 						}
 						sc.nextLine();
 						break;
 					case "p":
-						System.out.print("\nInforme o valor da sua proposta em reais (separado por vírgula): R$");
+						System.out.print("\nInforme o valor da sua proposta em reais: R$");
 						double valorProposta = sc.nextDouble();
 						LocalDate data = LocalDate.now();
 						DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -244,12 +244,12 @@ public class Main {
 								+ "1 - Continuar a visualizar os Imóveis.\n" + "2 - Voltar ao menu anterior.");
 						int respostaProposta = sc.nextInt();
 						if (respostaProposta == 2) {
-							i = listaDeImoveis.size();
+							i = -1;
 						}
 						sc.nextLine();
 						break;
 					case "q":
-						i = listaDeImoveis.size();
+						i = -1;
 						break;
 					default:
 						System.out.println("Você selecionou uma opção inválida. Tente novamente.");
@@ -275,7 +275,7 @@ public class Main {
 	public static boolean exibirMenuLogadoProprietario(Proprietario c, boolean keep, Scanner sc) {
 		System.out.println("Seja bem-vindo(a) " + c.getNomeUsuario());
 		System.out.print("Selecione a Opção desejada:\n" + "1 - Visualizar dados da Conta.\n"
-				+ "2 - Cadastrar Imovel.\n" + "3 - Visualizar Imoveis\n" + "4 - Deslogar\n" + "5 - Sair do sistema\n");
+				+ "2 - Cadastrar Imovel.\n" + "3 - Visualizar seus Imoveis\n" + "4 - Deslogar\n" + "5 - Sair do sistema\n");
 		int selecaoConta = sc.nextInt();
 		switch (selecaoConta) {
 		case 1:
@@ -314,7 +314,7 @@ public class Main {
 				System.out.print("Digite o tamanho do seu imovel em metros quadrados:\n");
 				double tamanhoimovel = sc.nextDouble();
 				sc.nextLine(); // Limpa o buffer do scanner
-				System.out.print("Descreva em poucas palavras uma breve descrição do imovel:\n");
+				System.out.print("Informe uma descrição breve do seu Imóvel:\n");
 				String descricao = sc.nextLine();
 				System.out.print("Digite o valor do imovel em reais:\n");
 				double valorimovel = sc.nextDouble();
