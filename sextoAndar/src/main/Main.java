@@ -160,7 +160,7 @@ public class Main {
 	}
 
 	public static boolean exibirMenuLogadoUsuario(Usuario u, boolean keep, Scanner sc) {
-		System.out.println("Logado como usuario: " + u.getNomeUsuario());
+		System.out.println("Seja bem-vindo(a) " + u.getNomeUsuario());
 		System.out.print("Selecione a Opção desejada:\n" 
 				+ "1 - Visualizar dados da Conta.\n" 
 				+ "2 - Deslogar.\n"
@@ -205,7 +205,7 @@ public class Main {
 	}
 
 	public static boolean exibirMenuLogadoProprietario(Proprietario c, boolean keep, Scanner sc) {
-		System.out.println("Logado como usuario: " + c.getNomeUsuario());
+		System.out.println("Seja bem-vindo(a) " + c.getNomeUsuario());
 		System.out.print("Selecione a Opção desejada:\n" 
 				+ "1 - Visualizar dados da Conta.\n" 
 				+ "2 - Cadastrar Imovel.\n"
