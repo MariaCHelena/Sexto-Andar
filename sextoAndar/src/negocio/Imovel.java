@@ -86,6 +86,13 @@ public abstract class Imovel {
 		this.visitasAgendades = visitasAgendades;
 	}
 	
+	public void agendarVisita(Visita visita) {
+		visitasAgendades.add(visita);
+	}
+	
+	public void fazerProposta(Proposta proposta) {
+		propostasRegistradas.add(proposta);
+	}
 	
 	
 }
