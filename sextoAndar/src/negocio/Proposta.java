@@ -3,13 +3,13 @@ package negocio;
 public class Proposta {
 	private String data;
 	private double valorProposta;
-	private String autor;
+	private Usuario usuario;
 	private Imovel imovel;
-	public Proposta(String data, double valorProposta, String autor, Imovel imovel) {
+	public Proposta(String data, double valorProposta, Usuario usuario, Imovel imovel) {
 		super();
 		this.data = data;
 		this.valorProposta = valorProposta;
-		this.autor = autor;
+		this.usuario = usuario;
 		this.imovel = imovel;
 	}
 	public String getData() {
@@ -24,11 +24,11 @@ public class Proposta {
 	public void setValorProposta(double valorProposta) {
 		this.valorProposta = valorProposta;
 	}
-	public String getAutor() {
-		return autor;
+	public Usuario getUsuario() {
+		return usuario;
 	}
-	public void setAutor(String autor) {
-		this.autor = autor;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	public Imovel getImovel() {
 		return imovel;

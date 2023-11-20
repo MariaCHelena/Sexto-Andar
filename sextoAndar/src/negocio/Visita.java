@@ -2,15 +2,15 @@ package negocio;
 
 public class Visita {
 	private String dataVisita;
-	private String nomeVisitante;
-	private String nomeProprietario;
+	private Usuario usuario;
+	private Proprietario proprietario;
 	private boolean visitaRealizada;
 	private Imovel imovel;
-	public Visita(String dataVisita, String nomeVisitante, String nomeProprietario, boolean visitaRealizada,
+	public Visita(String dataVisita, Usuario usuario, Proprietario proprietario, boolean visitaRealizada,
 			Imovel imovel) {
 		this.dataVisita = dataVisita;
-		this.nomeVisitante = nomeVisitante;
-		this.nomeProprietario = nomeProprietario;
+		this.usuario = usuario;
+		this.proprietario = proprietario;
 		this.visitaRealizada = visitaRealizada;
 		this.imovel = imovel;
 	}
@@ -21,17 +21,17 @@ public class Visita {
 	public void setDataVisita(String dataVisita) {
 		this.dataVisita = dataVisita;
 	}
-	public String getNomeVisitante() {
-		return nomeVisitante;
+	public Usuario getUsuario() {
+		return usuario;
 	}
-	public void setNomeVisitante(String nomeVisitante) {
-		this.nomeVisitante = nomeVisitante;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
-	public String getNomeProprietario() {
-		return nomeProprietario;
+	public Proprietario getProprietario() {
+		return proprietario;
 	}
-	public void setNomeProprietario(String nomeProprietario) {
-		this.nomeProprietario = nomeProprietario;
+	public void setProprietario(Proprietario proprietario) {
+		this.proprietario = proprietario;
 	}
 	public boolean isVisitaRealizada() {
 		return visitaRealizada;
