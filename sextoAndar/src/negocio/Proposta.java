@@ -12,6 +12,13 @@ public class Proposta {
 		this.usuario = usuario;
 		this.imovel = imovel;
 	}
+	public String toString() {
+		return "Proposta:\n"
+				+ "Data da proposta: " + getData() + "\n"
+				+ "Valor da proposta: " + getValorProposta() + "\n"
+				+ "Usuário que fez a proposta: " + usuario.toString() + "\n"
+				+ "Imóvel da proposta: " + imovel.toString() + "\n";
+	}
 	public String getData() {
 		return data;
 	}
