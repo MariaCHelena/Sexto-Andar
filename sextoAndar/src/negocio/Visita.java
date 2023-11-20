@@ -14,7 +14,14 @@ public class Visita {
 		this.visitaRealizada = visitaRealizada;
 		this.imovel = imovel;
 	}
-	
+	public String toString() {
+		return "Visita:\n"
+				+ "Data da visita: " + getDataVisita() + "\n"
+				+ "Usuário que marcou a visita: " + usuario.toString() + "\n"
+				+ "Proprietário do imóvel a ser visitado: " + proprietario.toString() + "\n"
+				+ "Status da visita: " + isVisitaRealizada() + "\n"
+				+ "Imóvel a ser visitado: " + imovel.toString() + "\n";
+	}
 	public String getDataVisita() {
 		return dataVisita;
 	}
