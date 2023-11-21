@@ -11,8 +11,7 @@ public abstract class Imovel {
 	protected TipoDeImovel tipoDeImovel;
 	private ArrayListPersonalizado<Proposta> propostasRegistradas = new ArrayListPersonalizado<>();
 	private ArrayListPersonalizado<Visita> visitasAgendades = new ArrayListPersonalizado<>();
-	
-	
+
 	public Imovel(String endereco, double tamanhoImovel, String descricao, double valorDoImovel, String dataPublicacao,
 			TipoDeVenda tipoDeVenda, Proprietario p, TipoDeImovel tipoDeImovel) {
 		super();
