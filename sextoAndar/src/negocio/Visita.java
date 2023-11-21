@@ -16,13 +16,14 @@ public class Visita {
 		this.visitaRealizada = visitaRealizada;
 		this.imovel = imovel;
 	}
+	
 	public String toString() {
-		return "Visita:\n"
+		return "\nVisita:\n"
 				+ "Data da visita: " + getDataVisita() + "\n"
 				+ "Usuário que marcou a visita: " + usuario.toString() + "\n"
 				+ "Proprietário do imóvel a ser visitado: " + proprietario.getNomeUsuario() + " (" + proprietario.getEmail() + ")\n"
 				+ "Status da visita: " + isVisitaRealizada() + "\n"
-				+ "Id do imóvel a ser visitado: " + proprietario.getImoveisCadastrados().indexOf(imovel) + ", Id no sistema: " + Gerador_de_dados.imoveisCadastrados.indexOf(imovel) + "\n";
+				+ "Id do imóvel a ser visitado: " + (proprietario.getImoveisCadastrados().indexOf(imovel) + 1) + ", Id no sistema: " + Gerador_de_dados.imoveisCadastrados.indexOf(imovel) + "\n";
 	}
 	public String getDataVisita() {
 		return dataVisita;

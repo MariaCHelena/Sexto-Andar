@@ -241,7 +241,7 @@ public class Main {
 						LocalDate data = LocalDate.now();
 						DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 						Proposta propostaRealizada = new Proposta(data.format(fmt), valorProposta, contaUsuario,
-								listaDeImoveis.get(i));
+								listaDeImoveis.get(i), listaDeImoveis.get(i).getP());
 						listaDeImoveis.get(i).fazerProposta(propostaRealizada);
 						System.out.print("\nSua proposta foi enviada com sucesso!\n"
 								+ "1 - Continuar a visualizar os Imóveis.\n" + "2 - Voltar ao menu anterior.");
@@ -502,12 +502,24 @@ public class Main {
 							} else {
 								System.out.print(imovel.getPropostasRegistradas());
 							}
+							System.out.println("Aperte qualquer tecla para continuar");
+							String tocontinue = sc.nextLine();
+							if (tocontinue != null) {
+								sc.nextLine(); // limpando o scanner
+								break;
+							}
 							break;
 						case 2:
 							if(imovel.getVisitasAgendades().size() == 0) {
-								System.out.println("Nenhuma visita foi agendada nesse imóvel.");
+								System.out.println("Nenhuma visita foi agendada para esse imóvel.");
 							} else {
 								System.out.print(imovel.getVisitasAgendades());
+							}
+							System.out.println("Aperte qualquer tecla para continuar");
+							tocontinue = sc.nextLine();
+							if (tocontinue != null) {
+								sc.nextLine(); // limpando o scanner
+								break;
 							}
 							break;
 						case 3:
@@ -515,22 +527,14 @@ public class Main {
 							break;
 						case 4:
 							i = -1;
+							verificaResposta = false;
 							break;
 						default:
 							System.out.println("A opção escolhida é inválida! Tente novamente.");
 							break;
 						}
 					} while(verificaResposta);
-			}
-			
-
-			}
-			System.out.print(contaProprietario.getImoveisCadastrados());
-			System.out.println("Pressione qualuqer tecla para retornar\n");
-			String z = sc.nextLine();
-			if (z != null) {
-				sc.nextLine(); // limpando o scanner
-				break;
+				}
 			}
 			break;
 		case 4:
