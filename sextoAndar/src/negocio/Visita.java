@@ -1,5 +1,7 @@
 package negocio;
 
+import dados.Gerador_de_dados;
+
 public class Visita {
 	private String dataVisita;
 	private Usuario usuario;
@@ -18,9 +20,9 @@ public class Visita {
 		return "Visita:\n"
 				+ "Data da visita: " + getDataVisita() + "\n"
 				+ "Usuário que marcou a visita: " + usuario.toString() + "\n"
-				+ "Proprietário do imóvel a ser visitado: " + proprietario.toString() + "\n"
+				+ "Proprietário do imóvel a ser visitado: " + proprietario.getNomeUsuario() + " (" + proprietario.getEmail() + ")\n"
 				+ "Status da visita: " + isVisitaRealizada() + "\n"
-				+ "Imóvel a ser visitado: " + imovel.toString() + "\n";
+				+ "Id do imóvel a ser visitado: " + proprietario.getImoveisCadastrados().indexOf(imovel) + ", Id no sistema: " + Gerador_de_dados.imoveisCadastrados.indexOf(imovel) + "\n";
 	}
 	public String getDataVisita() {
 		return dataVisita;

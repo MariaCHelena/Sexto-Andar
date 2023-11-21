@@ -1,7 +1,6 @@
 package negocio;
 
 public class Apartamento extends Imovel {
-	private double valorAluguel;
 	private double precoCondominio;
 	private boolean areaDeConvivencia;
 	private int andar;
@@ -18,17 +17,6 @@ public class Apartamento extends Imovel {
 		this.pet = pet;
 	}
 	
-	public Apartamento(String endereco, double tamanhoImovel, String descricao, double valorDoImovel,
-			String dataPublicacao, TipoDeVenda tipoDeVenda, Proprietario p, TipoDeImovel tipoDeImovel, double valorAluguel, 
-			double precoCondominio, boolean areaDeConvivencia, int andar, boolean pet) {
-		super(endereco, tamanhoImovel, descricao, valorDoImovel, dataPublicacao, tipoDeVenda, p, tipoDeImovel);
-		this.valorAluguel = valorAluguel;
-		this.precoCondominio = precoCondominio;
-		this.areaDeConvivencia = areaDeConvivencia;
-		this.andar = andar;
-		this.pet = pet;
-	}
-	
 	public double calcularValorTotalDoApartamento(double precoCondominio, double valorDoImovel) {
 		return precoCondominio+getValorDoImovel();
 	}
@@ -38,7 +26,7 @@ public class Apartamento extends Imovel {
 			"Tamanho do Imóvel: " + getTamanhoImovel() + "\n" +
 			"Andar: "+getAndar()+"\n"+
 			"Descrição: " + getDescricao() + "\n" +
-			"Valor do Imóvel: " + getValorDoImovel() + "\n" +
+			(tipoDeVenda.equals(TipoDeVenda.ALUGUEL)? "Valor do aluguel: " : "Valor do imóvel: ") + getValorDoImovel() + "\n" +
 			"Data de publicação: " + getDataPublicacao() + "\n" +
 			"Tipo de Venda: " + (getTipoDeVenda().toString() == "ALUGUEL" ? "Aluguel" : "Venda") + "\n" +
 			"Preço do Condomínio: " + getPrecoCondominio() + "\n" +
@@ -77,11 +65,5 @@ public class Apartamento extends Imovel {
 
 	public void setPet(boolean pet) {
 		this.pet = pet;
-	}
-	public double getValorAluguel() {
-		return valorAluguel;
-	}
-	public void setValorAluguel(double valorAluguel) {
-		this.valorAluguel= valorAluguel; 
 	}
 }

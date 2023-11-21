@@ -31,6 +31,9 @@ public class Main {
 		// Criando conta para facilitar os testes
 		Usuario conta = new Usuario("Maria", "celular", "maria@gmail.com", "123");
 		Proprietario prop = new Proprietario("Victor", "931293912", "victor@gmail.com", "123");
+		Imovel imovTeste = new Casa("", 1.0, "", 2.0, "", TipoDeVenda.ALUGUEL, prop, TipoDeImovel.CASA, 2.0, true);
+		listaDeImoveis.add(imovTeste);
+		prop.cadastrarImovel(listaDeImoveis.get(listaDeImoveis.indexOf(imovTeste)));
 		listaDeUsuario.add(conta);
 		listaDeProprietario.add(prop);
 
@@ -274,8 +277,12 @@ public class Main {
 
 	public static boolean exibirMenuLogadoProprietario(Proprietario c, boolean keep, Scanner sc) {
 		System.out.println("Seja bem-vindo(a) " + c.getNomeUsuario());
-		System.out.print("Selecione a Opção desejada:\n" + "1 - Visualizar dados da Conta.\n"
-				+ "2 - Cadastrar Imovel.\n" + "3 - Visualizar seus Imoveis\n" + "4 - Deslogar\n" + "5 - Sair do sistema\n");
+		System.out.print("Selecione a Opção desejada:\n" 
+						+ "1 - Visualizar dados da Conta.\n"
+						+ "2 - Cadastrar Imovel.\n" 
+						+ "3 - Visualizar seus Imoveis\n" 
+						+ "4 - Deslogar\n" 
+						+ "5 - Sair do sistema\n");
 		int selecaoConta = sc.nextInt();
 		switch (selecaoConta) {
 		case 1:
@@ -473,6 +480,51 @@ public class Main {
 			}
 			break;
 		case 3:
+			if(contaProprietario.getImoveisCadastrados().size() == 0) {
+				System.out.println("Não há imóveis cadastrados nessa conta!");
+			} else {
+				for(int i = contaProprietario.getImoveisCadastrados().size()-1; i >= 0; i--) {
+					Imovel imovel = contaProprietario.getImoveisCadastrados().get(i);
+					boolean verificaResposta = true;
+					do {
+						System.out.println("---------------- Imóvel " + (contaProprietario.getImoveisCadastrados().indexOf(imovel) + 1) + " ----------------");
+						System.out.println(imovel);
+						System.out.println("Selecione uma opção:" 
+											+ "\n1 - Visualizar propostas do imóvel" 
+											+ "\n2 - Visualizar visitas agendadas" 
+											+ "\n3 - Visualizar próximo imóvel" 
+											+ "\n4 - Sair");
+						int resposta = sc.nextInt();
+						switch(resposta) {
+						case 1:
+							if(imovel.getPropostasRegistradas().size() == 0) {
+								System.out.println("Não foi realizada nenhuma proposta para esse imóvel.");
+							} else {
+								System.out.print(imovel.getPropostasRegistradas());
+							}
+							break;
+						case 2:
+							if(imovel.getVisitasAgendades().size() == 0) {
+								System.out.println("Nenhuma visita foi agendada nesse imóvel.");
+							} else {
+								System.out.print(imovel.getVisitasAgendades());
+							}
+							break;
+						case 3:
+							verificaResposta = false;
+							break;
+						case 4:
+							i = -1;
+							break;
+						default:
+							System.out.println("A opção escolhida é inválida! Tente novamente.");
+							break;
+						}
+					} while(verificaResposta);
+			}
+			
+
+			}
 			System.out.print(contaProprietario.getImoveisCadastrados());
 			System.out.println("Pressione qualuqer tecla para retornar\n");
 			String z = sc.nextLine();
