@@ -175,7 +175,10 @@ public class Main {
 	public static boolean exibirMenuLogadoUsuario(Usuario u, boolean keep, Scanner sc) {
 		System.out.println("Seja bem-vindo(a) " + u.getNomeUsuario());
 		System.out.print("Selecione a Opção desejada:\n" + "1 - Visualizar dados da Conta.\n"
-				+ "2 - Visualizar Imóveis.\n" + "3 - Deslogar.\n" + "4 - Sair do sistema\n");
+				+ "2 - Visualizar Imóveis.\n"
+				+ "3 - Visualizar Imoveis favoritos\n" 
+				+ "4 - Deslogar.\n" 
+				+ "5 - Sair do sistema\n");
 		int selecaoConta = sc.nextInt();
 		switch (selecaoConta) {
 		case 1:
@@ -215,6 +218,7 @@ public class Main {
 					System.out.println("Pressione 'n' para visualizar o próximo imóvel.\n\n"
 							+ "Ficou interessado, mas ainda não tem certeza?"
 							+ " Marque já a sua visita apertando a tecla 'v'!\n\n"
+							+ "Quer adicionar esse imovel a sua lista de imoveis favoritos? Aperte a tecla 'f'\n\n "
 							+ "Gostou muito? Faça já a sua proposta apertanto a tecla 'p'.\n\n"
 							+ "Pressione a tecla 'q' para voltar.");
 					String z = sc.nextLine();
@@ -234,6 +238,10 @@ public class Main {
 							i = -1;
 						}
 						sc.nextLine();
+						break;
+					case "f":
+						contaUsuario.favoritar(listaDeImoveis.get(i));
+						System.out.print("Imovel favoritado com sucesso! Siga para o proximo imovel\n");
 						break;
 					case "p":
 						System.out.print("\nInforme o valor da sua proposta em reais: R$");
@@ -263,9 +271,61 @@ public class Main {
 			}
 			break;
 		case 3:
-			contaUsuario = null;
+			if(contaUsuario.getFavoritos().size() == 0) {
+				System.out.print("Você não possui imoveis favoritos retornando ao menu principal\n");
+				break;
+			}
+			
+			for (int i =0; i<contaUsuario.getFavoritos().size();i++) {
+				System.out.print(contaUsuario.getFavoritos().get(i));
+				System.out.print("Selecione a opção desejada:\n"
+						+ "1 - Ver proximo imovel\n"
+						+ "2 - Marcar visita\n"
+						+ "3 - Fazer proposta\n"
+						+ "4 - Sair\n");
+				sc.nextLine();
+				String opciones = sc.nextLine();
+				if (opciones == "4") break;
+				switch(opciones) {
+				case "1":
+					break;
+				case "2":
+					System.out.print("\nInforme a data que você deseja realizar a visita: ");
+					String dataVisita = sc.nextLine();
+					Visita visitaAgendada = new Visita(dataVisita, contaUsuario, listaDeImoveis.get(i).getP(),
+							false, listaDeImoveis.get(i));
+					listaDeImoveis.get(i).agendarVisita(visitaAgendada);
+					System.out.print("\nSua visita foi agendada com sucesso!\n"
+							+ "1 - Continuar a visualizar os Imóveis.\n" + "2 - Voltar ao menu anterior.");
+					int respostaVisita = sc.nextInt();
+					if (respostaVisita == 2) {
+						i = -1;
+					}
+					sc.nextLine();
+					break;
+				case "3":
+					System.out.print("\nInforme o valor da sua proposta em reais: R$");
+					double valorProposta = sc.nextDouble();
+					LocalDate data = LocalDate.now();
+					DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+					Proposta propostaRealizada = new Proposta(data.format(fmt), valorProposta, contaUsuario,
+							listaDeImoveis.get(i), listaDeImoveis.get(i).getP());
+					listaDeImoveis.get(i).fazerProposta(propostaRealizada);
+					System.out.print("\nSua proposta foi enviada com sucesso!\n"
+							+ "1 - Continuar a visualizar os Imóveis.\n" + "2 - Voltar ao menu anterior.");
+					int respostaProposta = sc.nextInt();
+					if (respostaProposta == 2) {
+						i = -1;
+					}
+					sc.nextLine();
+					break;
+				}
+			}
 			break;
 		case 4:
+			contaUsuario = null;
+			break;
+		case 5:
 			keep = false;
 			break;
 		default:
